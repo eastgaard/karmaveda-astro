@@ -1,5 +1,6 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
+import { execSync } from 'node:child_process';
 
 import tailwindcss from '@tailwindcss/vite';
 import cloudflare from '@astrojs/cloudflare';
@@ -7,6 +8,15 @@ import sitemap from '@astrojs/sitemap';
 import seoGraph from '@jdevalk/astro-seo-graph/integration';
 
 
+
+function gitLastmod(filePath) {
+  try {
+    const log = execSync(`git log -1 --format="%cI" -- "${filePath}"`, { encoding: 'utf-8' }).trim();
+    return log ? new Date(log) : null;
+  } catch (e) {
+    return null;
+  }
+}
 
 // https://astro.build/config
 export default defineConfig({
@@ -21,11 +31,32 @@ export default defineConfig({
 
   integrations: [
     sitemap({
+      entryLimit: 1000,
+      chunks: {
+        'posts': (item) => {
+          if (new URL(item.url).pathname.startsWith('/blog/')) return item;
+        },
+        'pages': (item) => {
+          if (!new URL(item.url).pathname.startsWith('/blog/')) return item;
+        }
+      },
       serialize: (item) => {
-        // If it's a file, we could try to get the real path, but since item.url is a URL string, 
-        // a simple approach for astro.config is to just return item for now unless we do complex URL to file mapping.
-        // For standard Astro sites, mapping URL to file path can be tricky in the sitemap hook without extra context.
-        // Let's just return the item for now, or assume pages are in src/pages or src/content/pages.
+        let filePath = '';
+        const pathname = new URL(item.url).pathname.replace(/\/$/, '');
+        
+        if (pathname.startsWith('/blog/')) {
+          const slug = pathname.replace('/blog/', '');
+          filePath = `src/content/blog/${slug}.md`;
+        } else if (pathname === '') {
+          filePath = 'src/pages/index.astro';
+        } else {
+          filePath = `src/pages${pathname}.astro`;
+        }
+        
+        const lastmod = gitLastmod(filePath);
+        if (lastmod) {
+          item.lastmod = lastmod.toISOString();
+        }
         return item;
       }
     }),
