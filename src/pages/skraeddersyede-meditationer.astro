@@ -1,22 +1,21 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import TextWithImage from '../components/TextWithImage.astro';
+import PageHero from '../components/PageHero.astro';
 ---
 
 <Layout title="Personlige Meditationer | Karmaveda" description="Unikke og skræddersyede meditationer designet specifikt for behandlere, terapeuter, psykologer og til deres klienters unikke forløb.">
   
   <!-- Hero / Intro -->
-  <section class="w-full bg-gradient-to-br from-kv-earth-50 via-kv-earth-100 to-kv-earth-200 bg-[length:200%_200%] animate-gradient-shift pt-32 pb-24 border-b border-kv-earth-300/50">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <span class="text-sm font-semibold text-kv-green-600 uppercase tracking-widest mb-4 block">For Professionelle</span>
-      <h1 class="text-4xl md:text-5xl font-serif text-kv-green-900 mb-8 leading-tight">
-        Personlige meditationer til dig der arbejder som behandler, terapeut, psykolog mm.
-      </h1>
-      <p class="text-xl text-kv-text/80 leading-relaxed font-light mb-8">
-        Meditationer designet til dit forløb
-      </p>
-    </div>
-  </section>
+  <PageHero>
+    <span class="text-sm font-semibold text-kv-green-600 uppercase tracking-widest mb-4 block">For Professionelle</span>
+    <h1 class="text-4xl md:text-5xl font-serif text-kv-green-900 mb-8 leading-tight">
+      Personlige meditationer til dig der arbejder som behandler, terapeut, psykolog mm.
+    </h1>
+    <p class="text-xl text-kv-text/80 leading-relaxed font-light mb-8">
+      Meditationer designet til dit forløb
+    </p>
+  </PageHero>
 
   <!-- Content Section 1 -->
   <TextWithImage 

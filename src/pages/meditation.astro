@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import TextWithImage from '../components/TextWithImage.astro';
+import PageHero from '../components/PageHero.astro';
 ---
 
 <Layout 
@@ -8,26 +9,24 @@ import TextWithImage from '../components/TextWithImage.astro';
   description="Meditation er et vigtigt værktøj til at skabe balance i livet. Lyt til gratis guidede meditationer og få ro, nærvær og glæde i hverdagen."
 >
   <!-- Hero Section -->
-  <div class="w-full bg-gradient-to-br from-kv-earth-50 via-kv-earth-100 to-kv-earth-200 bg-[length:200%_200%] animate-gradient-shift pt-32 pb-24 border-b border-kv-earth-300/50">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <h1 class="text-4xl md:text-5xl lg:text-6xl font-serif text-[#606c38] mb-6 leading-tight font-bold">
-        Meditation
-      </h1>
-      <p class="text-xl md:text-2xl text-[#606c38]/80 font-light leading-relaxed max-w-3xl mx-auto mb-10">
-        Et vigtigt værktøj til at skabe balance i livet
-      </p>
-      
-      <div class="bg-white/60 backdrop-blur-sm p-8 rounded-3xl inline-block shadow-sm border border-white/40">
-        <h2 class="text-lg font-serif text-kv-green-900 mb-4">Lyt gratis til Karmaveda på din yndlings app:</h2>
-        <div class="flex flex-wrap justify-center gap-3">
-          <a href="https://open.spotify.com/show/0yu5c87AO9NpwojUYgPYQu" target="_blank" rel="noopener noreferrer" class="px-5 py-2.5 bg-white rounded-full text-kv-green-800 font-medium hover:bg-kv-green-50 transition-colors shadow-sm">Spotify</a>
-          <a href="https://www.youtube.com/channel/UCvlMZBLi94LgFxLFb-ume4A" target="_blank" rel="noopener noreferrer" class="px-5 py-2.5 bg-white rounded-full text-kv-green-800 font-medium hover:bg-kv-green-50 transition-colors shadow-sm">YouTube</a>
-          <a href="https://insighttimer.com/karmaveda" target="_blank" rel="noopener noreferrer" class="px-5 py-2.5 bg-white rounded-full text-kv-green-800 font-medium hover:bg-kv-green-50 transition-colors shadow-sm">InsightTimer</a>
-          <a href="https://podcasts.apple.com/us/podcast/karmaveda/id1504017633?uo=4" target="_blank" rel="noopener noreferrer" class="px-5 py-2.5 bg-white rounded-full text-kv-green-800 font-medium hover:bg-kv-green-50 transition-colors shadow-sm">iTunes</a>
-        </div>
+  <PageHero>
+    <h1 class="text-4xl md:text-5xl lg:text-6xl font-serif text-[#606c38] mb-6 leading-tight font-bold">
+      Meditation
+    </h1>
+    <p class="text-xl md:text-2xl text-[#606c38]/80 font-light leading-relaxed max-w-3xl mx-auto mb-10">
+      Et vigtigt værktøj til at skabe balance i livet
+    </p>
+    
+    <div class="bg-white/60 backdrop-blur-sm p-8 rounded-3xl inline-block shadow-sm border border-white/40">
+      <h2 class="text-lg font-serif text-kv-green-900 mb-4">Lyt gratis til Karmaveda på din yndlings app:</h2>
+      <div class="flex flex-wrap justify-center gap-3">
+        <a href="https://open.spotify.com/show/0yu5c87AO9NpwojUYgPYQu" target="_blank" rel="noopener noreferrer" class="px-5 py-2.5 bg-white rounded-full text-kv-green-800 font-medium hover:bg-kv-green-50 transition-colors shadow-sm">Spotify</a>
+        <a href="https://www.youtube.com/channel/UCvlMZBLi94LgFxLFb-ume4A" target="_blank" rel="noopener noreferrer" class="px-5 py-2.5 bg-white rounded-full text-kv-green-800 font-medium hover:bg-kv-green-50 transition-colors shadow-sm">YouTube</a>
+        <a href="https://insighttimer.com/karmaveda" target="_blank" rel="noopener noreferrer" class="px-5 py-2.5 bg-white rounded-full text-kv-green-800 font-medium hover:bg-kv-green-50 transition-colors shadow-sm">InsightTimer</a>
+        <a href="https://podcasts.apple.com/us/podcast/karmaveda/id1504017633?uo=4" target="_blank" rel="noopener noreferrer" class="px-5 py-2.5 bg-white rounded-full text-kv-green-800 font-medium hover:bg-kv-green-50 transition-colors shadow-sm">iTunes</a>
       </div>
     </div>
-  </div>
+  </PageHero>
 
   <!-- Få et liv med ro -->
   <TextWithImage 

@@ -1,37 +1,29 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import TextWithImage from '../components/TextWithImage.astro';
+import PageHero from '../components/PageHero.astro';
 ---
 
 <Layout title="Karmaveda | Din Lokale Ayurvediske Velværeklinik" description="Oplev ægte velvære hos Karmaveda med Ayurvediske livsstilskonsultationer, balancerende energibehandling og meditation. Find din indre balance og ro.">
   
   <!-- Hero Section -->
-  <section class="relative w-full bg-gradient-to-br from-kv-earth-50 via-kv-earth-100 to-kv-earth-200 bg-[length:200%_200%] animate-gradient-shift pt-32 pb-32 lg:pt-48 lg:pb-48 border-b border-kv-earth-300/50 overflow-hidden">
-    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <span class="text-sm font-semibold text-kv-green-600 uppercase tracking-widest mb-6 block">Velkommen til Karmaveda</span>
-      <h1 class="text-5xl sm:text-6xl lg:text-7xl font-serif text-kv-green-900 mb-8 leading-[1.1] max-w-4xl mx-auto">
-        Find din indre balance med Ayurveda & Meditation
-      </h1>
-      <p class="text-xl sm:text-2xl text-kv-text/80 mb-12 max-w-2xl mx-auto leading-relaxed font-light">
-        Oplev ægte velvære gennem holistiske behandlinger. Vi skaber ro i sindet og sundhed i kroppen gennem ældgammel visdom.
-      </p>
-      <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
-        <a href="#ydelser" class="inline-flex justify-center items-center px-10 py-4 border border-transparent text-lg font-medium rounded-full text-white bg-kv-green-600 hover:bg-kv-green-700 transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5">
-          Se Behandlinger
-        </a>
-        <a href="mailto:nina@karmaveda.dk" class="inline-flex justify-center items-center px-10 py-4 border-2 border-kv-green-600 text-lg font-medium rounded-full text-kv-green-700 hover:bg-kv-earth-100 transition-all duration-300">
-          Kontakt Mig
-        </a>
-      </div>
+  <PageHero isLarge={true}>
+    <span class="text-sm font-semibold text-kv-green-600 uppercase tracking-widest mb-6 block">Velkommen til Karmaveda</span>
+    <h1 class="text-5xl sm:text-6xl lg:text-7xl font-serif text-kv-green-900 mb-8 leading-[1.1] max-w-4xl mx-auto">
+      Find din indre balance med Ayurveda & Meditation
+    </h1>
+    <p class="text-xl sm:text-2xl text-kv-text/80 mb-12 max-w-2xl mx-auto leading-relaxed font-light">
+      Oplev ægte velvære gennem holistiske behandlinger. Vi skaber ro i sindet og sundhed i kroppen gennem ældgammel visdom.
+    </p>
+    <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
+      <a href="#ydelser" class="inline-flex justify-center items-center px-10 py-4 border border-transparent text-lg font-medium rounded-full text-white bg-kv-green-600 hover:bg-kv-green-700 transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5">
+        Se Behandlinger
+      </a>
+      <a href="mailto:nina@karmaveda.dk" class="inline-flex justify-center items-center px-10 py-4 border-2 border-kv-green-600 text-lg font-medium rounded-full text-kv-green-700 hover:bg-kv-earth-100 transition-all duration-300">
+        Kontakt Mig
+      </a>
     </div>
-    <!-- Decorative subtle pattern -->
-    <svg class="absolute top-0 right-0 -mr-20 -mt-20 h-96 w-96 text-kv-earth-300 opacity-20 animate-float" fill="currentColor" viewBox="0 0 100 100">
-      <circle cx="50" cy="50" r="50" />
-    </svg>
-    <svg class="absolute bottom-0 left-0 -ml-20 -mb-20 h-96 w-96 text-kv-earth-300 opacity-20 animate-float-delayed" fill="currentColor" viewBox="0 0 100 100">
-      <circle cx="50" cy="50" r="50" />
-    </svg>
-  </section>
+  </PageHero>
 
   <!-- Featured Services -->
   <section id="ydelser" class="py-24 bg-white scroll-mt-10">

@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import TextWithImage from '../components/TextWithImage.astro';
+import PageHero from '../components/PageHero.astro';
 ---
 
 <Layout 
@@ -8,17 +9,15 @@ import TextWithImage from '../components/TextWithImage.astro';
   description="Er du klar til forandring? Et skræddersyet ayurvedisk forløb der hjælper dig med fordøjelse, søvn, stress og skaber daglig balance og velvære."
 >
   <!-- Hero Section -->
-  <div class="w-full bg-gradient-to-br from-kv-earth-50 via-kv-earth-100 to-kv-earth-200 bg-[length:200%_200%] animate-gradient-shift pt-32 pb-24 border-b border-kv-earth-300/50">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <span class="text-sm font-semibold text-kv-green-600 uppercase tracking-widest mb-4 block">Livsstilskonsultation</span>
-      <h1 class="text-4xl md:text-5xl lg:text-6xl font-serif text-[#606c38] mb-6 leading-tight font-bold">
-        Ayurvedisk Livsstilskonsultation
-      </h1>
-      <p class="text-xl md:text-2xl text-[#606c38]/80 font-light leading-relaxed max-w-3xl mx-auto">
-        Skab balance i krop og sind med et forløb skræddersyet til dig
-      </p>
-    </div>
-  </div>
+  <PageHero>
+    <span class="text-sm font-semibold text-kv-green-600 uppercase tracking-widest mb-4 block">Livsstilskonsultation</span>
+    <h1 class="text-4xl md:text-5xl lg:text-6xl font-serif text-[#606c38] mb-6 leading-tight font-bold">
+      Ayurvedisk Livsstilskonsultation
+    </h1>
+    <p class="text-xl md:text-2xl text-[#606c38]/80 font-light leading-relaxed max-w-3xl mx-auto">
+      Skab balance i krop og sind med et forløb skræddersyet til dig
+    </p>
+  </PageHero>
 
   <!-- Er du klar til forandring? -->
   <TextWithImage 
@@ -146,13 +145,6 @@ import TextWithImage from '../components/TextWithImage.astro';
       </div>
     </div>
     
-    <!-- Decorative subtle pattern -->
-    <svg class="absolute top-0 right-0 -mr-32 -mt-32 h-96 w-96 text-kv-green-800 opacity-30 animate-float" fill="currentColor" viewBox="0 0 100 100">
-      <circle cx="50" cy="50" r="50" />
-    </svg>
-    <svg class="absolute bottom-0 left-0 -ml-32 -mb-32 h-96 w-96 text-kv-green-800 opacity-30 animate-float-delayed" fill="currentColor" viewBox="0 0 100 100">
-      <circle cx="50" cy="50" r="50" />
-    </svg>
   </section>
 
 </Layout>
