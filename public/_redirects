@@ -1,4 +1,8 @@
 # Cloudflare Pages Redirects
 # Format: /old-path /new-path 301
-# Eksempel:
-# /gamle-behandlinger /behandlinger 301
+/contact /om-nina-riisager 301
+/taknemmelighed /blog/taknemmelighed 301
+/meditation/personlige-meditationer /skraeddersyede-meditationer 301
+/7-grundprincipper /blog/de-7-grundprincipper-i-mindfulness 301
+/30-videnskabelige-undersoegelser /blog/videnskabelige-undersoegelser-om-meditation 301
+/sov-dig-til-sundhed /blog/sov-dig-til-sundhed 301

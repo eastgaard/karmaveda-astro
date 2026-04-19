@@ -4,7 +4,7 @@ import { createSchemaEndpoint } from '@jdevalk/astro-seo-graph';
 export const GET = createSchemaEndpoint({
   entries: () => getCollection('blog'),
   mapper: (post) => {
-    const url = `https://karmaveda.dk/blog/${post.id}/`;
+    const url = `https://www.karmaveda.dk/blog/${post.id}/`;
     return [
       {
         '@type': 'BlogPosting',

@@ -20,7 +20,7 @@ function gitLastmod(filePath) {
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://karmaveda.dk',
+  site: 'https://www.karmaveda.dk',
   
   vite: {
     plugins: [tailwindcss()],
@@ -64,12 +64,12 @@ export default defineConfig({
       markdownAlternate: true,
       indexNow: {
         key: '82a9d8c7b6e5f4a3b2c1d0e9f8a7b6c5',
-        host: 'karmaveda.dk',
-        siteUrl: 'https://karmaveda.dk',
+        host: 'www.karmaveda.dk',
+        siteUrl: 'https://www.karmaveda.dk',
       },
       llmsTxt: {
         title: 'Karmaveda',
-        siteUrl: 'https://karmaveda.dk',
+        siteUrl: 'https://www.karmaveda.dk',
         summary: 'Karmaveda er en holistisk velværeklinik fokuseret på Ayurvediske behandlinger, herunder Ayurvedisk massage, Shirodhara og sundhedskonsultationer.',
       },
     })
