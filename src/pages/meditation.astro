@@ -1,250 +1,186 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import TextWithImage from '../components/TextWithImage.astro';
 ---
 
-<Layout title="Meditation | Karmaveda" description="Meditation er et vigtigt værktøj til at skabe balance i livet. Lyt til gratis guidede meditationer og få ro, nærvær og glæde i hverdagen.">
+<Layout 
+  title="Meditation | Karmaveda" 
+  description="Meditation er et vigtigt værktøj til at skabe balance i livet. Lyt til gratis guidede meditationer og få ro, nærvær og glæde i hverdagen."
+>
+  <!-- Hero Section -->
   <div class="w-full bg-gradient-to-br from-[#fefae0] to-[#e9edc9] pt-32 pb-24 border-b border-[#dda15e]/20">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
       <h1 class="text-4xl md:text-5xl lg:text-6xl font-serif text-[#606c38] mb-6 leading-tight font-bold">
         Meditation
       </h1>
-      <p class="text-xl md:text-2xl text-[#606c38]/80 font-light leading-relaxed max-w-3xl mx-auto">
+      <p class="text-xl md:text-2xl text-[#606c38]/80 font-light leading-relaxed max-w-3xl mx-auto mb-10">
         Et vigtigt værktøj til at skabe balance i livet
       </p>
+      
+      <div class="bg-white/60 backdrop-blur-sm p-8 rounded-3xl inline-block shadow-sm border border-white/40">
+        <h2 class="text-lg font-serif text-kv-green-900 mb-4">Lyt gratis til Karmaveda på din yndlings app:</h2>
+        <div class="flex flex-wrap justify-center gap-3">
+          <a href="https://open.spotify.com/show/0yu5c87AO9NpwojUYgPYQu" target="_blank" rel="noopener noreferrer" class="px-5 py-2.5 bg-white rounded-full text-kv-green-800 font-medium hover:bg-kv-green-50 transition-colors shadow-sm">Spotify</a>
+          <a href="https://www.youtube.com/channel/UCvlMZBLi94LgFxLFb-ume4A" target="_blank" rel="noopener noreferrer" class="px-5 py-2.5 bg-white rounded-full text-kv-green-800 font-medium hover:bg-kv-green-50 transition-colors shadow-sm">YouTube</a>
+          <a href="https://insighttimer.com/karmaveda" target="_blank" rel="noopener noreferrer" class="px-5 py-2.5 bg-white rounded-full text-kv-green-800 font-medium hover:bg-kv-green-50 transition-colors shadow-sm">InsightTimer</a>
+          <a href="https://podcasts.apple.com/us/podcast/karmaveda/id1504017633?uo=4" target="_blank" rel="noopener noreferrer" class="px-5 py-2.5 bg-white rounded-full text-kv-green-800 font-medium hover:bg-kv-green-50 transition-colors shadow-sm">iTunes</a>
+        </div>
+      </div>
     </div>
   </div>
 
-  <article class="bg-white py-16">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      
-      <!-- Lyt med -->
-      <section class="mb-20">
-        <h2 class="text-3xl font-serif text-kv-green-900 mb-6 text-center">Gratis guidede meditationer og åndedrætsøvelser</h2>
-        <p class="text-center text-kv-text/80 mb-8">Søg i din foretrukne lyd-app efter <strong>Karmaveda</strong></p>
-        
-        <div class="flex flex-wrap justify-center gap-4">
-          <a href="https://open.spotify.com/show/0yu5c87AO9NpwojUYgPYQu" target="_blank" rel="noopener noreferrer" class="px-6 py-3 bg-kv-earth-50 rounded-full text-kv-green-800 font-medium hover:bg-kv-green-100 transition-colors border border-kv-green-200">Spotify</a>
-          <a href="https://www.youtube.com/channel/UCvlMZBLi94LgFxLFb-ume4A" target="_blank" rel="noopener noreferrer" class="px-6 py-3 bg-kv-earth-50 rounded-full text-kv-green-800 font-medium hover:bg-kv-green-100 transition-colors border border-kv-green-200">YouTube</a>
-          <a href="https://insighttimer.com/karmaveda" target="_blank" rel="noopener noreferrer" class="px-6 py-3 bg-kv-earth-50 rounded-full text-kv-green-800 font-medium hover:bg-kv-green-100 transition-colors border border-kv-green-200">InsightTimer</a>
-          <a href="https://podcasts.apple.com/us/podcast/karmaveda/id1504017633?uo=4" target="_blank" rel="noopener noreferrer" class="px-6 py-3 bg-kv-earth-50 rounded-full text-kv-green-800 font-medium hover:bg-kv-green-100 transition-colors border border-kv-green-200">iTunes</a>
-          <a href="https://podcasts.google.com/feed/aHR0cHM6Ly9hbmNob3IuZm0vcy8xNmNmY2I4MC9wb2RjYXN0L3Jzcw==" target="_blank" rel="noopener noreferrer" class="px-6 py-3 bg-kv-earth-50 rounded-full text-kv-green-800 font-medium hover:bg-kv-green-100 transition-colors border border-kv-green-200">Podcast</a>
-        </div>
-      </section>
+  <!-- Få et liv med ro -->
+  <TextWithImage 
+    imageSrc="https://lirp.cdn-website.com/5633c741/dms3rep/multi/opt/IMG_20170621_062437-f63bf4d9-1920w.jpg" 
+    imageAlt="Få et liv med ro og nærvær" 
+    imagePosition="left"
+    title="Få et liv med ro, nærvær og glæde"
+    subtitle="Lever du i nuet?"
+    bgColor="white"
+  >
+    <p class="font-medium text-lg text-kv-green-800">Drømmer du om mere indre ro, nærvær, glæde og overskud i hverdagen?</p>
+    <p>
+      Mange mennesker går rundt med en følelse af ikke at slå til. Vi løber hurtigere og hurtigere i hamsterhjulet – men til hvilken nytte?
+    </p>
+    <p>
+      Du kender den garanteret: Den konstante følelse af aldrig at være rigtigt til stede. Hverken på arbejdet eller hjemme. Bippende notifikationer, vibrerende telefoner og uendelige e-mails gør det svært at være nærværende.
+    </p>
+    <p>
+      For det er der aldrig ro til. Der er aldrig overskud nok. Det fører til manglende livsglæde og velvære, både mentalt og fysisk.
+    </p>
+  </TextWithImage>
 
-      <div class="prose prose-lg prose-kv max-w-none">
-        <h3 class="text-2xl font-serif text-kv-green-900 mb-4">Få et liv med ro, nærvær og glæde</h3>
-        <p>Drømmer du om:</p>
-        <ul class="list-disc pl-6 mb-6">
-          <li>Mere indre ro og nærvær?</li>
-          <li>Mere glæde og energi?</li>
-          <li>Mere overskud i hverdagen?</li>
-        </ul>
-        
-        <p class="font-medium text-xl text-kv-green-800 mt-8 mb-4">Lever du i nuet?</p>
-        <p>Mange mennesker går rundt med en følelse af ikke at slå til. Og drømmer om mere ro, nærvær, selvindsigt, styrke og glæde ved livet.</p>
-        <p>Vi løber hurtigere og hurtigere i hamsterhjulet – men til hvilken nytte?</p>
-        <p>Du kender den garanteret:</p>
-        <p>Den konstante følelse af aldrig at være rigtigt til stede. Hverken på arbejdet eller hjemme. Og uden at kunne mærke dig selv i det accelererede digitale samfund, vi lever i.</p>
-        <p>Bippende notifikationer, vibrerende telefoner og uendelige e-mails gør det svært for mange at være nærværende. For det er der aldrig ro til. Der er aldrig overskud nok.</p>
-        <p>Det fører til manglende livsglæde og velvære. Både mentalt og fysisk.</p>
-
-        <img src="https://lirp.cdn-website.com/5633c741/dms3rep/multi/opt/IMG_20170621_062437-f63bf4d9-1920w.jpg" alt="Yoga og meditation" class="rounded-2xl shadow-md my-12 w-full object-cover max-h-[500px]" loading="lazy" />
-
-        <h3 class="text-2xl font-serif text-kv-green-900 mb-4 mt-12">Meditation – virker det?</h3>
-        <p>Jeg ved, hvad du tænker.</p>
-        <p class="italic text-kv-green-800">"Virker det? Er det ikke bare noget hokus pokus, som en guru i Indien har fundet på?"</p>
-        <p>Det korte svar er: <strong>Ja, det virker.</strong></p>
-        <p>Men du behøver ikke tage mit ord for det. Du kan tage videnskabens ord.</p>
-        <p>Der er efterhånden en overvældende mængde forskning, som viser, at meditation, mindfulness og vejrtrækningsøvelser har adskillige positive effekter. Både på vores fysiske og mentale helbred.</p>
-        <p>Lad os kigge på nogle af de videnskabeligt dokumenterede fordele.</p>
-
-        <img src="https://lirp.cdn-website.com/5633c741/dms3rep/multi/opt/shutterstock_790043194-d8f99742-1920w.jpg" alt="Dokumenterede effekter ved meditation" class="rounded-2xl shadow-md my-12 w-full object-cover max-h-[500px]" loading="lazy" />
-
-        <h3 class="text-2xl font-serif text-kv-green-900 mb-6">Dokumenterede effekter ved meditation</h3>
-        
-        <h4 class="text-xl font-medium text-kv-green-800 mb-3 mt-8">Øget mental velvære og livsglæde</h4>
-        <p>Adskillige videnskabelige studier dokumenterer, at meditation har positive effekter på dit mentale velvære. Et belgisk studie fra 2013 med 400 studerende konkluderede fx, at de studerende, som deltog i et meditationsprogram, viste reducerede symptomer på depression, stress og angst – og virkningen kunne stadig måles 6 måneder senere.</p>
-        <p>Andet forskning viser desuden, at meditation:</p>
-        <ul class="list-disc pl-6 mb-8">
-          <li>Øger livsglæde</li>
-          <li>Modvirker depression og angst</li>
-          <li>Modvirker stress</li>
-          <li>Giver større indre ro og styrke</li>
-        </ul>
-
-        <h4 class="text-xl font-medium text-kv-green-800 mb-3 mt-8">+ Bedre helbred</h4>
-        <p>Effekterne af meditation på helbred og sundhed er veldokumenterede. I en videnskabelig undersøgelse fra 2012 fandt forskere 48 % mindre risiko for hjerteanfald og slagtilfælde i en gruppe af hjertepatienter, som deltog i meditationsundervisning.</p>
-        <p>Andre studier viser bl.a., at meditation:</p>
-        <ul class="list-disc pl-6 mb-8">
-          <li>Mindsker risikoen for hjertesygdomme</li>
-          <li>Mindsker risikoen for stress</li>
-          <li>Mindsker smerte</li>
-          <li>Mindsker risikoen for højt blodtryk</li>
-          <li>Mindsker inflammation på celleniveau</li>
-        </ul>
-
-        <img src="https://lirp.cdn-website.com/5633c741/dms3rep/multi/opt/IMG_20180716_130756-1920w.jpg" alt="Bedre helbred og stærkere hjerne" class="rounded-2xl shadow-md my-12 w-full object-cover max-h-[500px]" loading="lazy" />
-
-        <h4 class="text-xl font-medium text-kv-green-800 mb-3 mt-8">+ Stærkere hjerne</h4>
-        <p>Sidst, men ikke mindst: Meditation gavner din hjerne. Et forsøg ved University of North Carolina viste, at efter blot fire dage med 20 minutters daglig meditation klarede en gruppe forsøgspersoner sig 10 gange bedre i en række krævende kognitive tests end den kontrolgruppe, som ikke mediterede.</p>
-        <p>Andre forsøg viser desuden, at meditation:</p>
-        <ul class="list-disc pl-6 mb-8">
-          <li>Styrker dit fokus og din koncentrationsevne</li>
-          <li>Styrker din hukommelse</li>
-          <li>Øger dannelsen af grå substans i hjernen (og det bli'r du glad for!)</li>
-          <li>Gør dig mere kreativ</li>
-        </ul>
-        <p>Uanset om du savner mere energi og nærvær i dagligdagen, eller du vil blive bedre til at håndtere de mange opgaver på jobbet, kan meditation hjælpe dig på vej.</p>
-        <p>Og husk: Dette er <strong>blot et udpluk af de mange videnskabelige studier, som påviser de gavnlige effekter ved at meditere.</strong> Der er mindst lige så mange andre undersøgelser derude, som påviser det positive udbytte ved at meditere dagligt.</p>
-
-        <hr class="my-16 border-kv-earth-200" />
-
-        <h3 class="text-2xl font-serif text-kv-green-900 mb-4">Jeg har ikke tid!</h3>
-        <p>Du behøver ikke bruge hele eller halve timer hver dag på at meditere.</p>
-        <p>Det gode ved meditation er, at du oplever en effekt, selvom du kun gør det nogle få minutter om dagen.</p>
-        <p>Det er min erfaring, at det er langt bedre at starte blidt ud. Start med at meditere et par minutter om dagen. Det kan være fra morgenstunden, eller om aftenen inden du går i seng. Det kan sågar være i en pause på arbejdet, hvor du tager et par minutter til at få styr på tankemylderet og finde den indre balance igen.</p>
-        <p>Det kræver ikke mere end nogle få minutter om dagen. At være bevidst nærværende på det du laver i nuet, kan være en simpel øvelse som at observere dit åndedræt. Uden at ændre på noget og uden at dømme de tanker og følelser der måtte opstå.</p>
-        <p>Når først du har lært nogle vejrtrækningsteknikker og lært dit eget åndedræt at kende, så kan du bruge det i løbet af dagen, når du fx har brug for at berolige dig selv eller finde ny energi.</p>
-        
-        <div class="bg-kv-earth-100 p-8 rounded-2xl italic text-kv-green-900 border-l-4 border-kv-green-500 my-10 shadow-sm text-lg">
-          Jeg kunne jo spørge: Hvor mange minutter om dagen bruger du på Netflix? Eller sociale medier?
-          <br><br>
-          Tro mig, du kan sagtens finde tid til at meditere.
-        </div>
-
-        <img src="https://lirp.cdn-website.com/5633c741/dms3rep/multi/opt/11-1920w.jpg" alt="Find tid til meditation" class="rounded-2xl shadow-md my-12 w-full object-cover max-h-[500px]" loading="lazy" />
-
-        <h3 class="text-2xl font-serif text-kv-green-900 mb-4 mt-12">Er det ikke svært?</h3>
-        <p>Øvelse gør mester. For ligesom med alt andet her i livet skal du øve dig på at meditere, før du bliver god til det.</p>
-        <p>Det vigtige er at du øver dig. Træner, og hellere en lille smule end slet ikke. Det gælder om at skabe en ny vane.</p>
-        <p>Med guidede meditationer og vejrtrækningsøvelser skal du blot lytte til vejledningen igennem øvelsen. Det er for mange en god og blid måde at komme i gang med at meditere på.</p>
-        <p>Alle kan lære at meditere. Og jeg mener ALLE.</p>
-        <p>Jeg tilrettelægger guidede meditationer, så de taler til forskellige måder at meditere på. Jeg anbefaler, at du prøver nogle forskellige meditationer, mindfulness samt åndedrætsøvelser og på forskellige tider af døgnet for at finde ud af, hvad der fungerer bedst for dig.</p>
-        <p>Og husk: Det er en proces. Bliv ved med at øve dig. Også selvom det føles svært.</p>
-        <p>Det er bedre at tage et skridt ad gangen end at storme afsted eller stå helt stille.</p>
-
-        <div class="text-center mt-20 mb-8 p-10 bg-kv-earth-50 rounded-3xl border border-kv-earth-200">
-          <p class="text-3xl font-serif text-kv-green-800 italic leading-relaxed">"Fred kommer indefra.<br>Søg det ikke udenfor"</p>
-          <p class="text-kv-text/60 mt-4 text-lg font-medium">— Buddha</p>
-        </div>
-
+  <!-- Meditation virker det -->
+  <TextWithImage 
+    imageSrc="https://lirp.cdn-website.com/5633c741/dms3rep/multi/opt/shutterstock_790043194-d8f99742-1920w.jpg" 
+    imageAlt="Dokumenterede effekter ved meditation" 
+    imagePosition="right"
+    title="Dokumenterede effekter"
+    subtitle="Meditation – virker det?"
+    bgColor="earth-50"
+  >
+    <p>
+      Jeg ved, hvad du tænker. <em class="text-kv-green-800">"Virker det? Er det ikke bare noget hokus pokus, som en guru i Indien har fundet på?"</em>
+    </p>
+    <p>
+      Det korte svar er: <strong>Ja, det virker.</strong> Og du behøver ikke tage mit ord for det. Du kan tage videnskabens ord.
+    </p>
+    <div class="mt-6 space-y-6">
+      <div>
+        <h4 class="font-serif text-xl text-kv-green-900 mb-2">Øget mental velvære og livsglæde</h4>
+        <p class="text-sm">
+          Adskillige videnskabelige studier dokumenterer, at meditation reducerer symptomer på depression, stress og angst. Det øger din livsglæde og giver større indre ro og styrke.
+        </p>
       </div>
-
-      <!-- FAQ -->
-      <section class="mt-24 pt-16 border-t border-kv-earth-200">
-        <h2 class="text-3xl font-serif text-kv-green-900 mb-8 text-center">Ofte stillede spørgsmål</h2>
-        <p class="text-center text-kv-text/80 mb-12">Du er altid velkommen til at tage <a href="mailto:nina@karmaveda.dk" class="text-kv-green-700 underline hover:text-kv-green-900 transition-colors">kontakt til mig</a>.</p>
-        
-        <div class="space-y-6 max-w-3xl mx-auto">
-          <details class="group bg-kv-earth-50 rounded-xl p-6 cursor-pointer open:bg-white open:ring-1 open:ring-kv-earth-200 transition-all">
-            <summary class="flex justify-between items-center font-serif text-xl text-kv-green-900 font-medium">
-              Hvad betyder Karmaveda?
-              <span class="ml-4 flex-shrink-0 text-kv-green-500 group-open:rotate-180 transition-transform">
-                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
-              </span>
-            </summary>
-            <div class="mt-4 text-kv-text/80 prose prose-kv max-w-none font-light">
-              <p>Karma stammer fra sanskrit, som er et gammelt indisk skriftsprog. Karma betyder at gøre/udføre eller at handle. Som et begreb henviser karma til alle handlinger, en person gør, både med sin krop og i sit sind. Alle handlinger har en konsekvens og du har altid et valg i en given situation. Det er også et valg ikke at gøre noget.</p>
-              <p>Karma er loven om årsag og virkning.</p>
-              <p>Veda stammer også fra sanskrit. Veda betyder viden eller visdom.</p>
-              <p>Jeg har valgt at danne ordet Karmaveda, fordi jeg mener at du med Ayurveda, yoga meditation og mindfulness får en dybere indsigt og viden om hvad der er bedst for dig, så du kan handle derefter. Med meditation stilner du sindet ved at skrue ned for den mentale støj af tanker og følelser så du bedre kan mærke dig selv, dine behov og værdier. Du står dermed stærkere i dig selv og jo mere autentisk du lever dit liv, des mere balance, harmoni og livsglæde vil du opleve.</p>
-              <p>Med viden om din ayurvediske krop og sind konstitution (Dosha sammensætning) kan du også tage nogle valg og og ændre din livsstil, så du forebygger sygdom og styrker din mentale og fysiske sundhed.</p>
-            </div>
-          </details>
-
-          <details class="group bg-kv-earth-50 rounded-xl p-6 cursor-pointer open:bg-white open:ring-1 open:ring-kv-earth-200 transition-all">
-            <summary class="flex justify-between items-center font-serif text-xl text-kv-green-900 font-medium">
-              Hvor længe skal jeg meditere ad gangen?
-              <span class="ml-4 flex-shrink-0 text-kv-green-500 group-open:rotate-180 transition-transform">
-                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
-              </span>
-            </summary>
-            <div class="mt-4 text-kv-text/80 prose prose-kv max-w-none font-light">
-              <p>Nogle studier har undersøgt effekten af at meditere 20-30 minutter om dagen, men der er flere og flere studier, som viser, at mindre kan gøre det. Et studie udgivet i Frontiers in Neuroscience i 2018 viste, at blot 10 minutters guidet meditation om dagen førte til en forbedring af kognitive evner.</p>
-              <p>Til at starte med – og for at gøre det til en vane – anbefaler jeg, at du blot mediterer 4-5 minutter ad gangen. Du kan altid skrue op, når du har mere tid eller det passer bedre ind i din hverdag. Det afgørende er, at du er konsistent.</p>
-            </div>
-          </details>
-
-          <details class="group bg-kv-earth-50 rounded-xl p-6 cursor-pointer open:bg-white open:ring-1 open:ring-kv-earth-200 transition-all">
-            <summary class="flex justify-between items-center font-serif text-xl text-kv-green-900 font-medium">
-              Jeg har ikke tid til at meditere. Hvad gør jeg?
-              <span class="ml-4 flex-shrink-0 text-kv-green-500 group-open:rotate-180 transition-transform">
-                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
-              </span>
-            </summary>
-            <div class="mt-4 text-kv-text/80 prose prose-kv max-w-none font-light">
-              <p>Du har tid. Tro mig. Der er 1.440 minutter i døgnet. Du kan godt finde 5 minutter om dagen til at passe på dig selv.</p>
-            </div>
-          </details>
-
-          <details class="group bg-kv-earth-50 rounded-xl p-6 cursor-pointer open:bg-white open:ring-1 open:ring-kv-earth-200 transition-all">
-            <summary class="flex justify-between items-center font-serif text-xl text-kv-green-900 font-medium">
-              Er der virkelig så mange positive effekter ved meditation?
-              <span class="ml-4 flex-shrink-0 text-kv-green-500 group-open:rotate-180 transition-transform">
-                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
-              </span>
-            </summary>
-            <div class="mt-4 text-kv-text/80 prose prose-kv max-w-none font-light">
-              <p>Ja. Og jeg har kun valgt et udpluk af de mange videnskabelige studier, der dokumenterer de gavnlige effekter ved at meditere dagligt. Vil du gerne have mere dokumentation, så tilmeld dig nyhedsbrevet og du vil få tilsendt en artikel med en masse videnskabelige studier.</p>
-            </div>
-          </details>
-
-          <details class="group bg-kv-earth-50 rounded-xl p-6 cursor-pointer open:bg-white open:ring-1 open:ring-kv-earth-200 transition-all">
-            <summary class="flex justify-between items-center font-serif text-xl text-kv-green-900 font-medium">
-              Hvornår ser jeg resultater?
-              <span class="ml-4 flex-shrink-0 text-kv-green-500 group-open:rotate-180 transition-transform">
-                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
-              </span>
-            </summary>
-            <div class="mt-4 text-kv-text/80 prose prose-kv max-w-none font-light">
-              <p>Det er svært at sige. De fleste studier har undersøgt effekterne efter 8 uger med daglig meditation. Nogle få studier har dog vist, at helt ned til 3-4 dage med meditation har givet positive resultater.</p>
-              <p>Det vigtigste for at opnå de mange gode resultater er, at du mediterer hver dag. Om det så blot er nogle få minutter.</p>
-            </div>
-          </details>
-
-          <details class="group bg-kv-earth-50 rounded-xl p-6 cursor-pointer open:bg-white open:ring-1 open:ring-kv-earth-200 transition-all">
-            <summary class="flex justify-between items-center font-serif text-xl text-kv-green-900 font-medium">
-              Hvad sker der, hvis jeg misser en dag?
-              <span class="ml-4 flex-shrink-0 text-kv-green-500 group-open:rotate-180 transition-transform">
-                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
-              </span>
-            </summary>
-            <div class="mt-4 text-kv-text/80 prose prose-kv max-w-none font-light">
-              <p>Sig pyt. Det er heller ikke hver eneste dag, jeg får mediteret. Jeg er ikke fanatisk. Men prøv, om du kan holde det til blot den ene svipser – sørg for at komme op på hesten igen allerede dagen efter. Don’t miss twice.</p>
-            </div>
-          </details>
-
-          <details class="group bg-kv-earth-50 rounded-xl p-6 cursor-pointer open:bg-white open:ring-1 open:ring-kv-earth-200 transition-all">
-            <summary class="flex justify-between items-center font-serif text-xl text-kv-green-900 font-medium">
-              Hvorfor står mit spørgsmål her ikke?
-              <span class="ml-4 flex-shrink-0 text-kv-green-500 group-open:rotate-180 transition-transform">
-                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
-              </span>
-            </summary>
-            <div class="mt-4 text-kv-text/80 prose prose-kv max-w-none font-light">
-              <p>Godt spørgsmål! Skriv til mig på <a href="mailto:nina@karmaveda.dk" class="text-kv-green-700 underline hover:text-kv-green-900 transition-colors">nina@karmaveda.dk</a>, så vil jeg med glæde gøre mit bedste for at svare dig.</p>
-            </div>
-          </details>
-        </div>
-      </section>
-
-      <!-- Newsletter Box -->
-      <section class="mt-20 bg-kv-green-900 text-kv-earth-100 p-10 md:p-14 rounded-3xl text-center shadow-xl relative overflow-hidden">
-        <div class="relative z-10">
-          <h2 class="text-3xl md:text-4xl font-serif text-white mb-6">+30 gode grunde til at meditere</h2>
-          <p class="text-lg md:text-xl max-w-2xl mx-auto mb-10 text-kv-earth-200 font-light leading-relaxed">
-            Hvis ovenstående ikke har overbevist dig om at meditation kan give dig mere værdi i livet, så lad mig sende dig en artikel, som med afsæt i over 3000 videnskabelige studier viser dig, hvor godt det er.
-          </p>
-          <a href="mailto:nina@karmaveda.dk?subject=Send mig artiklen om meditation" class="inline-block px-10 py-4 bg-kv-earth-400 text-kv-green-950 font-semibold rounded-full hover:bg-kv-earth-300 transition-colors shadow-md hover:shadow-lg text-lg transform hover:-translate-y-1">
-            Få artiklen tilsendt gratis
-          </a>
-        </div>
-        <!-- Decorative subtle pattern -->
-        <svg class="absolute top-0 right-0 -mr-20 -mt-20 h-64 w-64 text-kv-green-800 opacity-50" fill="currentColor" viewBox="0 0 100 100">
-          <circle cx="50" cy="50" r="50" />
-        </svg>
-      </section>
-
+      <div>
+        <h4 class="font-serif text-xl text-kv-green-900 mb-2">+ Bedre helbred</h4>
+        <p class="text-sm">
+          Forskning viser bl.a. at meditation mindsker risikoen for hjertesygdomme, forhøjet blodtryk og sænker inflammation på celleniveau.
+        </p>
+      </div>
     </div>
-  </article>
+  </TextWithImage>
+
+  <!-- Stærkere hjerne & tid -->
+  <TextWithImage 
+    imageSrc="https://lirp.cdn-website.com/5633c741/dms3rep/multi/opt/IMG_20180716_130756-1920w.jpg" 
+    imageAlt="Stærkere hjerne med meditation" 
+    imagePosition="left"
+    title="Giv dig selv tiden"
+    subtitle="Jeg har ikke tid!"
+    bgColor="white"
+  >
+    <p>
+      Du behøver ikke bruge hele eller halve timer hver dag på at meditere. Det gode ved meditation er, at du oplever en effekt, selvom du kun gør det nogle få minutter om dagen.
+    </p>
+    <div class="bg-kv-earth-100 p-6 rounded-2xl border-l-4 border-kv-green-500 my-6 italic text-kv-green-900">
+      Hvor mange minutter om dagen bruger du på Netflix? Eller sociale medier? Tro mig, du kan sagtens finde tid til at meditere.
+    </div>
+    <p>
+      Meditation gavner desuden din hjerne markant. Det styrker dit fokus, din koncentrationsevne, din hukommelse og gør dig mere kreativ. Blot fire dages daglig meditation kan forbedre dine kognitive evner signifikant.
+    </p>
+  </TextWithImage>
+
+  <!-- Citat -->
+  <section class="py-24 bg-kv-green-900 text-center px-4">
+    <p class="text-3xl md:text-5xl font-serif text-kv-earth-100 italic leading-relaxed max-w-4xl mx-auto">
+      "Fred kommer indefra.<br>Søg det ikke udenfor"
+    </p>
+    <p class="text-kv-green-300 mt-6 text-xl tracking-widest uppercase">— Buddha</p>
+  </section>
+
+  <!-- FAQ -->
+  <section class="py-24 bg-kv-earth-50">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-serif text-kv-green-900 mb-4">Ofte stillede spørgsmål</h2>
+        <p class="text-kv-text/70">Du er altid velkommen til at kontakte mig direkte på nina@karmaveda.dk</p>
+      </div>
+      
+      <div class="space-y-4">
+        <details class="group bg-white rounded-2xl p-6 cursor-pointer hover:shadow-md transition-all border border-kv-earth-200">
+          <summary class="flex justify-between items-center font-serif text-xl text-kv-green-900 font-medium">
+            Hvad betyder Karmaveda?
+            <span class="ml-4 flex-shrink-0 text-kv-green-500 group-open:rotate-180 transition-transform">
+              <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+            </span>
+          </summary>
+          <div class="mt-4 text-kv-text/80 text-sm leading-relaxed">
+            <p class="mb-3">Karma stammer fra sanskrit og betyder at handle. Karma er loven om årsag og virkning. Veda betyder viden eller visdom.</p>
+            <p>Jeg har valgt at danne ordet Karmaveda, fordi jeg mener at du med Ayurveda, yoga meditation og mindfulness får en dybere indsigt og viden om hvad der er bedst for dig, så du kan handle derefter.</p>
+          </div>
+        </details>
+
+        <details class="group bg-white rounded-2xl p-6 cursor-pointer hover:shadow-md transition-all border border-kv-earth-200">
+          <summary class="flex justify-between items-center font-serif text-xl text-kv-green-900 font-medium">
+            Hvor længe skal jeg meditere ad gangen?
+            <span class="ml-4 flex-shrink-0 text-kv-green-500 group-open:rotate-180 transition-transform">
+              <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+            </span>
+          </summary>
+          <div class="mt-4 text-kv-text/80 text-sm leading-relaxed">
+            <p>Til at starte med anbefaler jeg, at du blot mediterer 4-5 minutter ad gangen. Du kan altid skrue op, når det passer bedre ind i din hverdag. Det afgørende er, at du er konsistent.</p>
+          </div>
+        </details>
+
+        <details class="group bg-white rounded-2xl p-6 cursor-pointer hover:shadow-md transition-all border border-kv-earth-200">
+          <summary class="flex justify-between items-center font-serif text-xl text-kv-green-900 font-medium">
+            Hvornår ser jeg resultater?
+            <span class="ml-4 flex-shrink-0 text-kv-green-500 group-open:rotate-180 transition-transform">
+              <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+            </span>
+          </summary>
+          <div class="mt-4 text-kv-text/80 text-sm leading-relaxed">
+            <p>Nogle mærker effekt efter blot få dage, mens studier ofte kigger på effekten efter 8 uger. Det vigtigste er at meditere hver dag, uanset om det kun er et par minutter.</p>
+          </div>
+        </details>
+
+        <details class="group bg-white rounded-2xl p-6 cursor-pointer hover:shadow-md transition-all border border-kv-earth-200">
+          <summary class="flex justify-between items-center font-serif text-xl text-kv-green-900 font-medium">
+            Hvad sker der, hvis jeg misser en dag?
+            <span class="ml-4 flex-shrink-0 text-kv-green-500 group-open:rotate-180 transition-transform">
+              <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+            </span>
+          </summary>
+          <div class="mt-4 text-kv-text/80 text-sm leading-relaxed">
+            <p>Sig pyt! Jeg er ikke fanatisk. Men prøv, om du kan komme op på hesten igen allerede dagen efter. Don't miss twice.</p>
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter CTA -->
+  <section class="py-24 bg-white relative overflow-hidden">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl md:text-5xl font-serif text-kv-green-900 mb-6">+30 gode grunde til at meditere</h2>
+      <p class="text-xl text-kv-text/80 mb-10 leading-relaxed font-light">
+        Vil du have endnu mere dokumentation? Få tilsendt en gratis artikel, der baserer sig på over 3000 videnskabelige studier, som viser dig de utrolige fordele ved meditation.
+      </p>
+      <a href="mailto:nina@karmaveda.dk?subject=Send mig artiklen om meditation" class="inline-flex items-center px-10 py-4 bg-kv-green-600 text-white font-bold rounded-full hover:bg-kv-green-700 transition-colors shadow-lg transform hover:-translate-y-1">
+        Få artiklen tilsendt gratis
+      </a>
+    </div>
+  </section>
+
 </Layout>
