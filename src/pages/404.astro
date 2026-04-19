@@ -18,8 +18,15 @@ import FuzzyRedirect from '@jdevalk/astro-seo-graph/FuzzyRedirect.astro';
     </p>
 
     <!-- Glassmorphism Card for FuzzyRedirect -->
-    <div class="max-w-xl mx-auto bg-white/60 backdrop-blur-md p-8 rounded-3xl shadow-sm border border-white/50 mb-10">
-      <div class="text-left text-kv-green-900 prose prose-kv prose-a:text-kv-green-600 hover:prose-a:text-kv-green-500">
+    <div class="max-w-xl mx-auto bg-white/60 backdrop-blur-md p-8 rounded-3xl shadow-sm border border-white/50 mb-10 relative overflow-hidden">
+      
+      <!-- Sjov Scan Emoji Sektion -->
+      <div class="mb-6 text-center">
+        <div class="text-5xl mb-2 inline-block animate-scan">🕵️‍♀️🔍</div>
+        <p class="text-kv-green-700 font-medium italic text-sm">Karmaveda-radaren gennemsøger arkivet for dig...</p>
+      </div>
+
+      <div class="text-left text-kv-green-900 prose prose-kv prose-a:text-kv-green-600 hover:prose-a:text-kv-green-500 relative z-10">
         {/* 
           FuzzyRedirect component from @jdevalk/astro-seo-graph.
           It will automatically fetch the sitemap, calculate Levenshtein distance,
