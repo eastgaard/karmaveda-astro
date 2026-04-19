@@ -4,7 +4,15 @@ import Logo from './Logo.astro';
 
 const navItems = [
   { label: 'Forside', href: '/' },
-  { label: 'Behandlinger', href: '/behandlinger' },
+  {
+    label: 'Behandlinger',
+    href: '#',
+    children: [
+      { label: 'Oversigt & Priser', href: '/behandlinger' },
+      { label: 'Livsstilskonsultation', href: '/livsstilskonsultation' },
+      { label: 'Personlige Meditationer', href: '/skraeddersyede-meditationer' }
+    ]
+  },
   { label: 'Meditation', href: '/meditation' },
   { label: 'Om Karmaveda', href: '/om-os' },
   { label: 'Blog', href: '/blog' },
