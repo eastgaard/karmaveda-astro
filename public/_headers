@@ -1,2 +1,5 @@
 /*
   No-Vary-Search: key-order, params=("utm_source" "utm_medium" "utm_campaign" "utm_content" "utm_term" "fbclid" "gclid")
+
+/_astro/*
+  Cache-Control: public, max-age=31536000, immutable
