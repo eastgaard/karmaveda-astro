@@ -13,7 +13,10 @@ export default defineConfig({
   site: 'https://karmaveda.dk',
   
   vite: {
-    plugins: [tailwindcss()]
+    plugins: [tailwindcss()],
+    ssr: {
+      external: ['cloudflare:workers']
+    }
   },
 
   integrations: [
@@ -45,6 +48,7 @@ export default defineConfig({
     prerenderEnvironment: 'node',
     platformProxy: {
       enabled: true
-    }
+    },
+    imageService: 'compile'
   })
 });
