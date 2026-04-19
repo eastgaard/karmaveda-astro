@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
 import FuzzyRedirect from '@jdevalk/astro-seo-graph/FuzzyRedirect.astro';
 ---
 
@@ -7,30 +8,32 @@ import FuzzyRedirect from '@jdevalk/astro-seo-graph/FuzzyRedirect.astro';
   title="404 - Siden blev ikke fundet" 
   description="Beklager, vi kunne ikke finde den side du ledte efter på Karmaveda.dk."
 >
-  <main class="min-h-screen flex items-center justify-center bg-stone-50 py-12 px-4 sm:px-6 lg:px-8">
-    <div class="max-w-md w-full space-y-8 text-center">
-      <div>
-        <h1 class="mt-6 text-center text-4xl font-extrabold text-[#5B4A42]">404</h1>
-        <h2 class="mt-2 text-center text-2xl font-bold text-gray-900">Siden blev ikke fundet</h2>
-        <p class="mt-4 text-center text-sm text-gray-600">
-          Vi beklager, men den side du leder efter, ser ikke ud til at eksistere længere, eller også er der en lille stavefejl i linket.
-        </p>
-      </div>
+  <PageHero>
+    <span class="text-sm font-semibold text-kv-earth-600 uppercase tracking-widest mb-4 block">Fejl 404</span>
+    <h1 class="text-5xl md:text-6xl lg:text-7xl font-serif text-kv-green-900 mb-6 leading-tight font-bold">
+      Hov, siden blev ikke fundet
+    </h1>
+    <p class="text-xl md:text-2xl text-kv-green-800/80 font-light leading-relaxed max-w-2xl mx-auto mb-10">
+      Det ser ud til, at siden du leder efter ikke eksisterer, eller måske er flyttet.
+    </p>
 
-      {/* 
-        FuzzyRedirect component from @jdevalk/astro-seo-graph.
-        It will automatically fetch the sitemap, calculate Levenshtein distance,
-        and either redirect (if similarity > 85%) or show a "Did you mean..." suggestion.
-      */}
-      <div class="bg-white p-6 rounded-lg shadow-sm border border-stone-200">
+    <!-- Glassmorphism Card for FuzzyRedirect -->
+    <div class="max-w-xl mx-auto bg-white/60 backdrop-blur-md p-8 rounded-3xl shadow-sm border border-white/50 mb-10">
+      <div class="text-left text-kv-green-900 prose prose-kv prose-a:text-kv-green-600 hover:prose-a:text-kv-green-500">
+        {/* 
+          FuzzyRedirect component from @jdevalk/astro-seo-graph.
+          It will automatically fetch the sitemap, calculate Levenshtein distance,
+          and either redirect (if similarity > 85%) or show a "Did you mean..." suggestion.
+        */}
         <FuzzyRedirect />
       </div>
-
-      <div class="mt-8">
-        <a href="/" class="font-medium text-[#8C7A6B] hover:text-[#5B4A42] transition-colors">
-          &larr; Gå tilbage til forsiden
-        </a>
-      </div>
     </div>
-  </main>
+
+    <a href="/" class="inline-flex items-center justify-center px-8 py-4 border border-kv-green-700 text-kv-green-800 font-medium rounded-full hover:bg-kv-green-50 transition-colors">
+      <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+      </svg>
+      Find tilbage til forsiden
+    </a>
+  </PageHero>
 </Layout>
