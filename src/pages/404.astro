@@ -1,0 +1,36 @@
+---
+import Layout from '../layouts/Layout.astro';
+import FuzzyRedirect from '@jdevalk/astro-seo-graph/FuzzyRedirect.astro';
+---
+
+<Layout 
+  title="404 - Siden blev ikke fundet" 
+  description="Beklager, vi kunne ikke finde den side du ledte efter på Karmaveda.dk."
+>
+  <main class="min-h-screen flex items-center justify-center bg-stone-50 py-12 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-md w-full space-y-8 text-center">
+      <div>
+        <h1 class="mt-6 text-center text-4xl font-extrabold text-[#5B4A42]">404</h1>
+        <h2 class="mt-2 text-center text-2xl font-bold text-gray-900">Siden blev ikke fundet</h2>
+        <p class="mt-4 text-center text-sm text-gray-600">
+          Vi beklager, men den side du leder efter, ser ikke ud til at eksistere længere, eller også er der en lille stavefejl i linket.
+        </p>
+      </div>
+
+      {/* 
+        FuzzyRedirect component from @jdevalk/astro-seo-graph.
+        It will automatically fetch the sitemap, calculate Levenshtein distance,
+        and either redirect (if similarity > 85%) or show a "Did you mean..." suggestion.
+      */}
+      <div class="bg-white p-6 rounded-lg shadow-sm border border-stone-200">
+        <FuzzyRedirect />
+      </div>
+
+      <div class="mt-8">
+        <a href="/" class="font-medium text-[#8C7A6B] hover:text-[#5B4A42] transition-colors">
+          &larr; Gå tilbage til forsiden
+        </a>
+      </div>
+    </div>
+  </main>
+</Layout>

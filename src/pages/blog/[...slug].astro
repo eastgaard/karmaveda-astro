@@ -1,0 +1,163 @@
+---
+import { getCollection } from 'astro:content';
+import { Image } from 'astro:assets';
+import Layout from '../../layouts/Layout.astro';
+
+export async function getStaticPaths() {
+  const blogEntries = await getCollection('blog');
+  return blogEntries.map(entry => ({
+    params: { slug: entry.id }, props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+import { render } from 'astro:content';
+const { Content, headings } = await render(entry);
+
+// Filtrer overskrifter (kun H2 og H3 giver mening i en indholdsfortegnelse)
+const toc = headings.filter(h => h.depth > 1 && h.depth < 4);
+
+// Beregn læsetid (ca. 200 ord i minuttet)
+const wordCount = entry.body ? entry.body.split(/\s+/).length : 0;
+const readingTime = Math.max(1, Math.ceil(wordCount / 200));
+
+// Lav URL-venlig slug til kategorien
+const categorySlug = entry.data.category.toLowerCase()
+  .replace(/æ/g, 'ae')
+  .replace(/ø/g, 'oe')
+  .replace(/å/g, 'aa')
+  .replace(/[^a-z0-9]+/g, '-')
+  .replace(/(^-|-$)+/g, '');
+
+// Provide a custom title formatting for the layout
+const pageTitle = entry.data.seo?.title || entry.data.title;
+
+import relatedPostsData from '../../data/related-posts.json';
+
+// Fetch related articles from our pre-computed TF-IDF JSON matrix
+const allPosts = await getCollection('blog');
+
+// Define an interface for the expected JSON structure
+const matrix: Record<string, string[]> = relatedPostsData;
+
+const relatedSlugs = matrix[entry.id] || [];
+const relatedPosts = allPosts.filter(post => relatedSlugs.includes(post.id));
+
+// Sort the posts to match the order in the array (highest similarity first)
+relatedPosts.sort((a, b) => relatedSlugs.indexOf(a.id) - relatedSlugs.indexOf(b.id));
+---
+
+<Layout 
+  title={`${pageTitle} | Karmaveda`} 
+  description={entry.data.seo?.description || entry.data.description}
+  image={entry.data.image ? entry.data.image.src : undefined}
+  author={entry.data.author}
+  ogType="article"
+  publishedTime={entry.data.publishDate}
+  category={entry.data.category}
+>
+  <!-- Hero Section -->
+  <div class="w-full bg-gradient-to-br from-[#fefae0] to-[#e9edc9] pt-32 pb-24 border-b border-[#dda15e]/20">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-sm font-semibold text-[#dda15e] uppercase tracking-widest mb-4 flex items-center flex-wrap gap-y-2">
+        <a href={`/kategori/${categorySlug}`} class="inline-block bg-[#dda15e]/10 text-[#dda15e] px-3 py-1 rounded-full text-xs hover:bg-[#dda15e]/20 transition-colors mr-3">
+          {entry.data.category}
+        </a>
+        <a href="/om-nina-riisager" class="text-[#606c38] hover:text-[#dda15e] transition-colors">Skrevet af {entry.data.author}</a>
+        {readingTime > 0 && (
+          <>
+            <span class="mx-2 text-[#606c38]/40">&bull;</span>
+            <span class="text-[#606c38] flex items-center">
+              <svg class="w-4 h-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              {readingTime} min læsetid
+            </span>
+          </>
+        )}
+      </div>
+      <h1 class="text-4xl md:text-5xl lg:text-6xl font-serif text-[#606c38] mb-6 leading-tight font-bold">
+        {entry.data.title}
+      </h1>
+      {entry.data.description && (
+        <p class="text-xl md:text-2xl text-[#606c38]/80 font-light leading-relaxed max-w-3xl">
+          {entry.data.description}
+        </p>
+      )}
+    </div>
+  </div>
+
+  <!-- Article Body -->
+  <article class="bg-white pb-24">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      {/* Hero Image if available (pulled up slightly to overlap the background) */}
+      {entry.data.image && (
+        <figure class="-mt-12 mb-14 relative z-10 rounded-3xl overflow-hidden shadow-xl border-4 border-white bg-white">
+          <Image 
+            src={entry.data.image} 
+            alt={entry.data.title} 
+            class="w-full h-auto object-cover max-h-[600px]" 
+          />
+        </figure>
+      )}
+      
+      {/* Padding adjustment if there is no image */}
+      {!entry.data.image && <div class="pt-12"></div>}
+
+      {/* Indholdsfortegnelse (TOC) */}
+      {toc.length > 0 && (
+        <div class="mb-12 bg-kv-earth-50 border border-kv-earth-200 rounded-3xl p-8 shadow-sm">
+          <h2 class="text-xl font-serif text-kv-green-900 mb-4 flex items-center">
+            <svg class="w-5 h-5 mr-2 text-kv-earth-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7" />
+            </svg>
+            I denne artikel:
+          </h2>
+          <ul class="space-y-3">
+            {toc.map(heading => (
+              <li class={`${heading.depth === 3 ? 'ml-6 text-sm' : 'text-base font-medium'} text-kv-green-700 hover:text-kv-green-500 transition-colors`}>
+                <a href={`#${heading.slug}`} class="block py-1">{heading.text}</a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
+      <!-- Article Content -->
+      <div class="prose prose-lg prose-kv max-w-none prose-headings:font-serif prose-headings:text-kv-green-900 prose-a:text-kv-green-600 hover:prose-a:text-kv-green-500 prose-img:rounded-2xl">
+        <Content />
+      </div>
+
+      <!-- Article Footer -->
+      <footer class="mt-16 pt-8 border-t border-kv-earth-200">
+        
+        {relatedPosts.length > 0 && (
+          <div class="mb-12">
+            <h3 class="text-2xl font-serif text-kv-green-900 mb-6">Læs også:</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {relatedPosts.map(post => (
+                <a href={`/blog/${post.id}`} class="group block border border-kv-earth-200 bg-kv-earth-50 rounded-2xl overflow-hidden hover:shadow-md transition-all h-full">
+                  <div class="p-6 h-full flex flex-col">
+                    <h4 class="text-lg font-serif text-kv-green-900 group-hover:text-kv-green-600 transition-colors line-clamp-3">
+                      {post.data.title}
+                    </h4>
+                  </div>
+                </a>
+              ))}
+            </div>
+          </div>
+        )}
+
+        <div class="flex items-center">
+          <a href="/blog" class="inline-flex items-center text-kv-green-700 font-medium hover:text-kv-green-500 transition-colors">
+            <svg class="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16l-4-4m0 0l4-4m-4 4h18" />
+            </svg>
+            Tilbage til alle artikler
+          </a>
+        </div>
+      </footer>
+    </div>
+  </article>
+</Layout>

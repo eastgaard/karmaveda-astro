@@ -1,0 +1,16 @@
+---
+import { getCollection } from 'astro:content';
+
+let posts: any[] = [];
+let error = '';
+try {
+  posts = await getCollection('blog');
+} catch (e) {
+  error = String(e);
+}
+---
+
+<pre>
+  {JSON.stringify(posts, null, 2)}
+</pre>
+<div>Error: {error}</div>

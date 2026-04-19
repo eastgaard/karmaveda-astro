@@ -1,0 +1,7 @@
+{
+  "project_name": "astro-app",
+  "version": "1.0.0",
+  "framework": "astro",
+  "styling": "tailwindcss",
+  "deployment": "cloudflare-pages"
+}

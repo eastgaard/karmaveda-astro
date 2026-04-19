@@ -1,0 +1,69 @@
+---
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Seo from '@jdevalk/astro-seo-graph/Seo.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+  image?: string;
+  author?: string;
+  ogType?: 'website' | 'article';
+  publishedTime?: Date;
+  category?: string;
+}
+
+const { 
+  title, 
+  description = "Karmaveda - Din vej til naturlig sundhed",
+  image = "/images/hero-bg.png",
+  author,
+  ogType = "website",
+  publishedTime,
+  category
+} = Astro.props;
+
+const siteUrl = "https://karmaveda.dk";
+const currentUrl = new URL(Astro.url.pathname, siteUrl).toString();
+
+// Sørg for at billedet er en absolut URL
+const absoluteImageUrl = image.startsWith('http') ? image : new URL(image, siteUrl).toString();
+---
+
+<!doctype html>
+<html lang="da">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta name="theme-color" content="#3a5a40" />
+    <meta name="generator" content={Astro.generator} />
+    
+    <Seo
+      url={currentUrl}
+      title={title}
+      description={description}
+      siteName="Karmaveda"
+      inLanguage="da-DK"
+      ogImage={absoluteImageUrl}
+      ogImageAlt={title}
+      ogType={ogType}
+      author={author}
+      twitter={author ? { creator: "@karmaveda" } : undefined}
+      article={ogType === 'article' ? {
+        authors: author ? [author] : undefined,
+        publishedTime: publishedTime,
+        section: category
+      } : undefined}
+    />
+  </head>
+  <body class="min-h-screen flex flex-col font-sans selection:bg-kv-green-200 selection:text-kv-green-900">
+    <Header />
+    <main class="flex-grow">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

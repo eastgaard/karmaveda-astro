@@ -1,0 +1,4 @@
+# Cloudflare Pages Redirects
+# Format: /old-path /new-path 301
+# Eksempel:
+# /gamle-behandlinger /behandlinger 301

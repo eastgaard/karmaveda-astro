@@ -1,0 +1,96 @@
+---
+// src/components/TextWithImage.astro
+interface Props {
+  imageSrc: string;
+  imageAlt: string;
+  imagePosition?: 'left' | 'right';
+  title: string;
+  subtitle?: string;
+  buttonText?: string;
+  buttonHref?: string;
+  bgColor?: 'white' | 'earth-50' | 'earth-100' | 'green-900';
+}
+
+const { 
+  imageSrc, 
+  imageAlt, 
+  imagePosition = 'left', 
+  title, 
+  subtitle,
+  buttonText,
+  buttonHref,
+  bgColor = 'white' 
+} = Astro.props;
+
+// Determine background classes based on prop
+const bgClasses = {
+  'white': 'bg-white',
+  'earth-50': 'bg-kv-earth-50',
+  'earth-100': 'bg-kv-earth-100',
+  'green-900': 'bg-kv-green-900 text-white'
+};
+
+const bgClass = bgClasses[bgColor];
+
+// Text color adjustments based on background
+const textClasses = bgColor === 'green-900' 
+  ? 'text-kv-earth-100' 
+  : 'text-kv-text/80';
+
+const titleClasses = bgColor === 'green-900'
+  ? 'text-white'
+  : 'text-kv-green-900';
+
+const subtitleClasses = bgColor === 'green-900'
+  ? 'text-kv-green-300'
+  : 'text-kv-green-600';
+---
+
+<section class={`py-20 ${bgClass}`}>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class={`flex flex-col gap-12 lg:gap-20 items-center ${imagePosition === 'right' ? 'lg:flex-row-reverse' : 'lg:flex-row'}`}>
+      
+      <!-- Image Content -->
+      <div class="w-full lg:w-1/2">
+        <div class="relative group rounded-2xl overflow-hidden shadow-xl aspect-w-4 aspect-h-3">
+          <img 
+            src={imageSrc} 
+            alt={imageAlt} 
+            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+            loading="lazy"
+          />
+          <!-- Decorative element -->
+          <div class={`absolute inset-0 border-4 rounded-2xl pointer-events-none ${bgColor === 'green-900' ? 'border-kv-earth-400/20' : 'border-kv-earth-100'}`}></div>
+        </div>
+      </div>
+
+      <!-- Text Content -->
+      <div class="w-full lg:w-1/2 flex flex-col justify-center">
+        {subtitle && (
+          <span class={`text-sm font-semibold uppercase tracking-widest mb-3 block ${subtitleClasses}`}>
+            {subtitle}
+          </span>
+        )}
+        <h2 class={`text-3xl md:text-4xl font-serif mb-6 leading-tight ${titleClasses}`}>
+          {title}
+        </h2>
+        <div class={`text-lg font-light leading-relaxed space-y-6 ${textClasses}`}>
+          <slot />
+        </div>
+        
+        {buttonText && buttonHref && (
+          <div class="mt-10">
+            <a href={buttonHref} class={`inline-flex items-center justify-center px-8 py-3.5 border border-transparent text-base font-medium rounded-full transition-all duration-300 shadow-md hover:shadow-lg ${
+              bgColor === 'green-900' 
+                ? 'bg-kv-earth-400 text-kv-green-950 hover:bg-kv-earth-300' 
+                : 'bg-kv-green-600 text-white hover:bg-kv-green-800'
+            }`}>
+              {buttonText}
+            </a>
+          </div>
+        )}
+      </div>
+
+    </div>
+  </div>
+</section>

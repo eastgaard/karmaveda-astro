@@ -1,0 +1,38 @@
+{
+  "name": "astro-app",
+  "type": "module",
+  "version": "0.0.1",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "node ./scripts/compute-related.mjs && astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "generate-types": "wrangler types"
+  },
+  "dependencies": {
+    "@astrojs/check": "^0.9.8",
+    "@astrojs/cloudflare": "^13.1.10",
+    "@astrojs/rss": "^4.0.18",
+    "@astrojs/sitemap": "^3.7.2",
+    "@jdevalk/astro-seo-graph": "^1.2.0",
+    "@tailwindcss/vite": "^4.2.2",
+    "astro": "^6.1.8",
+    "satori": "^0.26.0",
+    "sharp": "^0.34.5",
+    "tailwindcss": "^4.2.2",
+    "typescript": "^5.9.3",
+    "wrangler": "^4.83.0"
+  },
+  "overrides": {
+    "vite": "^7"
+  },
+  "devDependencies": {
+    "@tailwindcss/typography": "^0.5.19",
+    "gray-matter": "^4.0.3",
+    "natural": "^8.1.1",
+    "remove-markdown": "^0.6.3"
+  }
+}

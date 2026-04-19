@@ -1,0 +1,44 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+@theme {
+  /* Karmaveda Brand Colors - Earth & Nature Palette */
+  --color-kv-green-50: #f1f8f1;
+  --color-kv-green-100: #e0eee0;
+  --color-kv-green-200: #c2dec2;
+  --color-kv-green-300: #9fc89f;
+  --color-kv-green-400: #7aab7a;
+  --color-kv-green-500: #588157; /* Main Brand Green */
+  --color-kv-green-600: #426541;
+  --color-kv-green-700: #3a5a40; /* Dark Green */
+  --color-kv-green-800: #2d4531;
+  --color-kv-green-900: #263829;
+  
+  --color-kv-earth-50: #fbf9f6; /* Very light sand */
+  --color-kv-earth-100: #f4f1ea; /* Light earth / background */
+  --color-kv-earth-200: #e8e0d1;
+  --color-kv-earth-300: #dac9b3;
+  --color-kv-earth-400: #cdb292;
+  --color-kv-earth-500: #bc6c25; /* Accent Earth / Dark Sand */
+  --color-kv-earth-600: #a85f1f;
+  --color-kv-earth-700: #894b1a;
+
+  --color-kv-text: #2c332c; /* Soft dark green-grey instead of pure black */
+
+  /* Fonts */
+  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  --font-serif: 'Playfair Display', ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+}
+
+@layer base {
+  body {
+    background-color: var(--color-kv-earth-50);
+    color: var(--color-kv-text);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-serif);
+    color: var(--color-kv-green-900);
+  }
+}

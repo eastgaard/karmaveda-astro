@@ -1,0 +1,22 @@
+{
+  "de-7-grundprincipper-i-mindfulness": [
+    "videnskabelige-undersoegelser-om-meditation",
+    "sov-dig-til-sundhed",
+    "taknemmelighed"
+  ],
+  "sov-dig-til-sundhed": [
+    "videnskabelige-undersoegelser-om-meditation",
+    "de-7-grundprincipper-i-mindfulness",
+    "taknemmelighed"
+  ],
+  "taknemmelighed": [
+    "videnskabelige-undersoegelser-om-meditation",
+    "de-7-grundprincipper-i-mindfulness",
+    "sov-dig-til-sundhed"
+  ],
+  "videnskabelige-undersoegelser-om-meditation": [
+    "de-7-grundprincipper-i-mindfulness",
+    "sov-dig-til-sundhed",
+    "taknemmelighed"
+  ]
+}
