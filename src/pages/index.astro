@@ -2,6 +2,8 @@
 import Layout from '../layouts/Layout.astro';
 import TextWithImage from '../components/TextWithImage.astro';
 import PageHero from '../components/PageHero.astro';
+import imgIndex1 from '../assets/63 (1).jpg';
+import imgIndex2 from '../assets/31.jpg';
 ---
 
 <Layout title="Karmaveda | Din Lokale Ayurvediske Velværeklinik" description="Oplev ægte velvære hos Karmaveda med Ayurvediske livsstilskonsultationer, balancerende energibehandling og meditation. Find din indre balance og ro.">
@@ -99,7 +101,7 @@ import PageHero from '../components/PageHero.astro';
 
   <!-- Mød Nina -->
   <TextWithImage 
-    imageSrc="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=1000&auto=format&fit=crop" 
+    imageSrc={imgIndex1} 
     imageAlt="Nina Riisager" 
     imagePosition="left"
     title="Mød Nina Riisager"
@@ -121,7 +123,7 @@ import PageHero from '../components/PageHero.astro';
 
   <!-- Karmaveda Filosofien -->
   <TextWithImage 
-    imageSrc="https://images.unsplash.com/photo-1545205597-3d9d02c29597?q=80&w=1000&auto=format&fit=crop" 
+    imageSrc={imgIndex2} 
     imageAlt="Karmaveda Klinikken" 
     imagePosition="right"
     title="Karmaveda Filosofien"

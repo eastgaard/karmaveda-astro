@@ -2,6 +2,9 @@
 import Layout from '../layouts/Layout.astro';
 import TextWithImage from '../components/TextWithImage.astro';
 import PageHero from '../components/PageHero.astro';
+import imgMeditation1 from '../assets/IMG_20170621_062437-f63bf4d9.png';
+import imgMeditation2 from '../assets/11.jpg';
+import imgMeditation3 from '../assets/IMG_20180716_130756.jpg';
 ---
 
 <Layout 
@@ -35,7 +38,7 @@ import PageHero from '../components/PageHero.astro';
 
   <!-- Få et liv med ro -->
   <TextWithImage 
-    imageSrc="https://lirp.cdn-website.com/5633c741/dms3rep/multi/opt/IMG_20170621_062437-f63bf4d9-1920w.jpg" 
+    imageSrc={imgMeditation1} 
     imageAlt="Få et liv med ro og nærvær" 
     imagePosition="left"
     title="Få et liv med ro, nærvær og glæde"
@@ -56,7 +59,7 @@ import PageHero from '../components/PageHero.astro';
 
   <!-- Meditation virker det -->
   <TextWithImage 
-    imageSrc="https://lirp.cdn-website.com/5633c741/dms3rep/multi/opt/shutterstock_790043194-d8f99742-1920w.jpg" 
+    imageSrc={imgMeditation2} 
     imageAlt="Dokumenterede effekter ved meditation" 
     imagePosition="right"
     title="Dokumenterede effekter"
@@ -87,7 +90,7 @@ import PageHero from '../components/PageHero.astro';
 
   <!-- Stærkere hjerne & tid -->
   <TextWithImage 
-    imageSrc="https://lirp.cdn-website.com/5633c741/dms3rep/multi/opt/IMG_20180716_130756-1920w.jpg" 
+    imageSrc={imgMeditation3} 
     imageAlt="Stærkere hjerne med meditation" 
     imagePosition="left"
     title="Giv dig selv tiden"

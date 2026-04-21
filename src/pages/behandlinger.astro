@@ -2,6 +2,9 @@
 import Layout from '../layouts/Layout.astro';
 import TextWithImage from '../components/TextWithImage.astro';
 import PageHero from '../components/PageHero.astro';
+import imgBehandlinger1 from '../assets/IMG_20170308_145130_853.jpg';
+import imgBehandlinger2 from '../assets/IMG_20170601_102106_778-72faf60f.jpg';
+import imgBehandlinger3 from '../assets/IMG_20200312_163051.jpg';
 ---
 
 <Layout 
@@ -19,7 +22,7 @@ import PageHero from '../components/PageHero.astro';
 
   <!-- Section 1: Livsstilskonsultation -->
   <TextWithImage 
-    imageSrc="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=1000&auto=format&fit=crop" 
+    imageSrc={imgBehandlinger1} 
     imageAlt="Ayurvedisk livsstilskonsultation" 
     imagePosition="left"
     title="Ayurvedisk Livsstilskonsultation"
@@ -42,7 +45,7 @@ import PageHero from '../components/PageHero.astro';
 
   <!-- Section 2: Balancerende energibehandling -->
   <TextWithImage 
-    imageSrc="https://images.unsplash.com/photo-1519823551278-64ac92734fb1?q=80&w=1000&auto=format&fit=crop" 
+    imageSrc={imgBehandlinger2} 
     imageAlt="Balancerende energibehandling" 
     imagePosition="right"
     title="Balancerende Energibehandling"
@@ -74,7 +77,7 @@ import PageHero from '../components/PageHero.astro';
 
   <!-- Section 3: Mindfulness & Meditation -->
   <TextWithImage 
-    imageSrc="https://images.unsplash.com/photo-1593811167562-9cef47bfc4d7?q=80&w=1000&auto=format&fit=crop" 
+    imageSrc={imgBehandlinger3} 
     imageAlt="Mindfulness og meditation" 
     imagePosition="left"
     title="Mindfulness & Meditation"
