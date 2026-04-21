@@ -1,13 +1,13 @@
 ---
 title: "30+ videnskabelige undersøgelser der viser, at meditation er godt for dig"
-description: "Der findes flere tusinde videnskabelige undersøgelser om fordelene ved meditation. Læs med her, hvor vi har samlet de vigtigste konklusioner om hjernen, fysisk sundhed og mentalt overskud."
+description: "Der findes flere tusinde videnskabelige undersøgelser om fordelene ved meditation. Læs med her, hvor jeg har samlet de vigtigste konklusioner om hjernen, fysisk sundhed og mentalt overskud."
 publishDate: 2026-04-19
 author: "Nina Riisager"
 category: "Meditation"
 image: '../../assets/blog/meditation.png'
 seo:
   title: "Videnskab om meditation: 30+ undersøgelser | Blog | Karmaveda"
-  description: "Der findes flere tusinde videnskabelige undersøgelser om fordelene ved meditation. Læs med her, hvor vi har samlet de vigtigste konklusioner om hjernen, fysisk sundhed og mentalt overskud."
+  description: "Der findes flere tusinde videnskabelige undersøgelser om fordelene ved meditation. Læs med her, hvor jeg har samlet de vigtigste konklusioner om hjernen, fysisk sundhed og mentalt overskud."
 ---
 
 Du har sikkert læst og hørt at det er sundt for dig at meditere. At det er godt mod stress.
