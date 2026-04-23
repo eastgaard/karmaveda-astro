@@ -80,6 +80,6 @@ export default defineConfig({
     platformProxy: {
       enabled: true
     },
-    imageService: 'compile'
+    imageService: process.env.NODE_ENV === 'production' ? 'compile' : 'passthrough'
   })
 });

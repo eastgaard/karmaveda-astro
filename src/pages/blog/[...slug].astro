@@ -58,107 +58,202 @@ relatedPosts.sort((a, b) => relatedSlugs.indexOf(a.id) - relatedSlugs.indexOf(b.
   category={entry.data.category}
 >
   <!-- Hero Section -->
-  <PageHero theme="green">
-    <div class="flex flex-col items-center">
-      <div class="text-sm font-semibold text-kv-earth-600 uppercase tracking-widest mb-4 flex items-center justify-center flex-wrap gap-y-2">
-        <a href={`/kategori/${categorySlug}`} class="inline-block bg-kv-earth-500/10 text-kv-earth-600 px-3 py-1 rounded-full text-xs hover:bg-kv-earth-500/20 transition-colors mr-3">
-          {entry.data.category}
-        </a>
-        <a href="/om-nina-riisager" class="text-kv-green-700 hover:text-kv-earth-600 transition-colors">Skrevet af {entry.data.author}</a>
-        {readingTime > 0 && (
-          <>
-            <span class="mx-2 text-kv-green-700/40">&bull;</span>
-            <span class="text-kv-green-700 flex items-center">
-              <svg class="w-4 h-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-              {readingTime} min læsetid
-            </span>
-          </>
+  {entry.data.image ? (
+    <section class="relative w-full overflow-hidden pt-32 pb-24 md:pt-48 md:pb-32 flex flex-col justify-center min-h-[50vh] md:min-h-[60vh]">
+      <div class="absolute inset-0 z-0">
+        <Image src={entry.data.image} alt={entry.data.title} class="w-full h-full object-cover object-center md:object-right" />
+        <div class="absolute inset-0 bg-kv-green-900/30 mix-blend-multiply"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-kv-green-900 via-kv-green-900/80 via-60% to-transparent md:hidden"></div>
+        <div class="absolute inset-0 hidden md:block bg-gradient-to-r from-kv-green-900 from-20% via-kv-green-900/90 via-50% to-transparent"></div>
+      </div>
+      
+      <div class="relative z-10 flex flex-col items-start px-4 sm:px-6 lg:px-8 mt-8 md:mt-12 w-full max-w-7xl mx-auto">
+        <div class="text-sm font-semibold text-white/90 uppercase tracking-widest mb-6 flex items-center flex-wrap gap-y-3">
+          <a href={`/kategori/${categorySlug}`} class="inline-block bg-white/20 backdrop-blur-md text-white px-4 py-1.5 rounded-full text-xs hover:bg-white/30 transition-colors mr-3 border border-white/10">
+            {entry.data.category}
+          </a>
+          <a href="/om-nina-riisager" class="hover:text-white transition-colors drop-shadow-sm">Skrevet af {entry.data.author}</a>
+          {readingTime > 0 && (
+            <>
+              <span class="mx-2 text-white/40">&bull;</span>
+              <span class="flex items-center drop-shadow-sm">
+                <svg class="w-4 h-4 mr-1.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                {readingTime} min læsetid
+              </span>
+            </>
+          )}
+        </div>
+        <h1 class="text-3xl md:text-5xl lg:text-6xl font-serif text-white mb-6 leading-tight font-bold max-w-3xl drop-shadow-lg">
+          {entry.data.title}
+        </h1>
+        {entry.data.description && (
+          <p class="text-lg md:text-xl text-white/90 font-light leading-relaxed max-w-2xl drop-shadow-md">
+            {entry.data.description}
+          </p>
         )}
       </div>
-      <h1 class="text-4xl md:text-5xl lg:text-6xl font-serif text-kv-green-900 mb-6 leading-tight font-bold max-w-4xl mx-auto">
-        {entry.data.title}
-      </h1>
-      {entry.data.description && (
-        <p class="text-xl md:text-2xl text-kv-green-800/80 font-light leading-relaxed max-w-3xl mx-auto">
-          {entry.data.description}
-        </p>
-      )}
-    </div>
-  </PageHero>
+    </section>
+  ) : (
+    <PageHero theme="green" isCompact={true}>
+      <div class="flex flex-col items-center">
+        <div class="text-sm font-semibold text-kv-earth-600 uppercase tracking-widest mb-4 flex items-center justify-center flex-wrap gap-y-2">
+          <a href={`/kategori/${categorySlug}`} class="inline-block bg-kv-earth-500/10 text-kv-earth-600 px-3 py-1 rounded-full text-xs hover:bg-kv-earth-500/20 transition-colors mr-3">
+            {entry.data.category}
+          </a>
+          <a href="/om-nina-riisager" class="text-kv-green-700 hover:text-kv-earth-600 transition-colors">Skrevet af {entry.data.author}</a>
+          {readingTime > 0 && (
+            <>
+              <span class="mx-2 text-kv-green-700/40">&bull;</span>
+              <span class="text-kv-green-700 flex items-center">
+                <svg class="w-4 h-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                {readingTime} min læsetid
+              </span>
+            </>
+          )}
+        </div>
+        <h1 class="text-3xl md:text-4xl lg:text-5xl font-serif text-kv-green-900 mb-6 leading-tight font-bold max-w-4xl mx-auto">
+          {entry.data.title}
+        </h1>
+        {entry.data.description && (
+          <p class="text-lg md:text-xl text-kv-green-800/80 font-light leading-relaxed max-w-3xl mx-auto">
+            {entry.data.description}
+          </p>
+        )}
+      </div>
+    </PageHero>
+  )}
 
   <!-- Article Body -->
   <article class="bg-white pt-12 pb-24">
-    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col lg:flex-row lg:justify-center lg:items-start lg:gap-12">
       
-      {/* Hero Image */}
-      {entry.data.image && (
-        <figure class="mb-14 relative z-10 rounded-3xl overflow-hidden shadow-sm border border-kv-earth-200">
-          <Image 
-            src={entry.data.image} 
-            alt={entry.data.title} 
-            class="w-full h-auto object-cover max-h-[500px]" 
-          />
-        </figure>
-      )}
-      
-      {/* Padding adjustment if there is no image */}
-      {!entry.data.image && <div class="pt-12"></div>}
-
-      {/* Indholdsfortegnelse (TOC) */}
+      {/* Desktop Sidebar (TOC) */}
       {toc.length > 0 && (
-        <div class="mb-12 bg-kv-earth-50 border border-kv-earth-200 rounded-3xl p-8 shadow-sm">
-          <h2 class="text-xl font-serif text-kv-green-900 mb-4 flex items-center">
-            <svg class="w-5 h-5 mr-2 text-kv-earth-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7" />
-            </svg>
-            I denne artikel:
-          </h2>
-          <ul class="space-y-3">
-            {toc.map(heading => (
-              <li class={`${heading.depth === 3 ? 'ml-6 text-sm' : 'text-base font-medium'} text-kv-green-700 hover:text-kv-green-500 transition-colors`}>
-                <a href={`#${heading.slug}`} class="block py-1">{heading.text}</a>
-              </li>
-            ))}
-          </ul>
-        </div>
+        <aside class="hidden lg:block w-72 flex-shrink-0 lg:sticky lg:top-32">
+          <div class="bg-kv-earth-50/50 border border-kv-earth-200 rounded-3xl p-6 shadow-sm">
+            <h2 class="text-lg font-serif text-kv-green-900 mb-4 flex items-center border-b border-kv-earth-200/60 pb-3">
+              <svg class="w-5 h-5 mr-2 text-kv-earth-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7" />
+              </svg>
+              Indholdsfortegnelse
+            </h2>
+            <ul id="toc-desktop-list" class="space-y-1 max-h-[calc(100vh-12rem)] overflow-y-auto pr-2 custom-scrollbar">
+              {toc.map(heading => (
+                <li class={`toc-item transition-all duration-300 border-l-2 border-transparent pl-3 py-1.5 rounded-r-lg ${heading.depth === 3 ? 'ml-4 text-sm' : 'text-base font-medium'} text-kv-green-700 hover:text-kv-green-500`}>
+                  <a href={`#${heading.slug}`} class="block leading-snug">{heading.text}</a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </aside>
       )}
 
-      <!-- Article Content -->
-      <div class="prose prose-lg prose-kv max-w-none prose-headings:font-serif prose-headings:text-kv-green-900 prose-a:text-kv-green-600 hover:prose-a:text-kv-green-500 prose-img:rounded-2xl">
-        <Content />
-      </div>
-
-      <!-- Article Footer -->
-      <footer class="mt-16 pt-8 border-t border-kv-earth-200">
+      <!-- Main Content Area -->
+      <div class="flex-1 w-full max-w-3xl mx-auto lg:mx-0">
         
-        {relatedPosts.length > 0 && (
-          <div class="mb-12">
-            <h3 class="text-2xl font-serif text-kv-green-900 mb-6">Læs også:</h3>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {relatedPosts.map(post => (
-                <a href={`/blog/${post.id}`} class="group block border border-kv-earth-200 bg-kv-earth-50 rounded-2xl overflow-hidden hover:shadow-md transition-all h-full">
-                  <div class="p-6 h-full flex flex-col">
-                    <h4 class="text-lg font-serif text-kv-green-900 group-hover:text-kv-green-600 transition-colors line-clamp-3">
-                      {post.data.title}
-                    </h4>
-                  </div>
-                </a>
+        {/* Indholdsfortegnelse (TOC) - Mobile Only */}
+        {toc.length > 0 && (
+          <details class="lg:hidden mb-10 bg-kv-earth-50 border border-kv-earth-200 rounded-2xl p-5 shadow-sm group">
+            <summary class="text-lg font-serif text-kv-green-900 flex items-center justify-between cursor-pointer list-none [&::-webkit-details-marker]:hidden">
+              <div class="flex items-center">
+                <svg class="w-5 h-5 mr-2 text-kv-earth-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7" />
+                </svg>
+                Indholdsfortegnelse:
+              </div>
+              <svg class="w-5 h-5 text-kv-earth-500 transition-transform group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </summary>
+            <ul id="toc-mobile-list" class="space-y-1 mt-4 pt-4 border-t border-kv-earth-200/60">
+              {toc.map(heading => (
+                <li class={`toc-item transition-all duration-300 border-l-2 border-transparent pl-3 py-1.5 rounded-r-lg ${heading.depth === 3 ? 'ml-6 text-sm' : 'text-base font-medium'} text-kv-green-700 hover:text-kv-green-500`}>
+                  <a href={`#${heading.slug}`} class="block leading-snug">{heading.text}</a>
+                </li>
               ))}
-            </div>
-          </div>
+            </ul>
+          </details>
         )}
 
-        <div class="flex items-center">
-          <a href="/blog" class="inline-flex items-center text-kv-green-700 font-medium hover:text-kv-green-500 transition-colors">
-            <svg class="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16l-4-4m0 0l4-4m-4 4h18" />
-            </svg>
-            Tilbage til alle artikler
-          </a>
+        <!-- Article Content -->
+        <div class="prose prose-lg prose-kv max-w-none prose-headings:font-serif prose-headings:text-kv-green-900 prose-headings:scroll-mt-28 prose-a:text-kv-green-600 hover:prose-a:text-kv-green-500 prose-img:rounded-2xl">
+          <Content />
         </div>
-      </footer>
+
+        <!-- Article Footer -->
+        <footer class="mt-16 pt-8 border-t border-kv-earth-200">
+          
+          {relatedPosts.length > 0 && (
+            <div class="mb-12">
+              <h3 class="text-2xl font-serif text-kv-green-900 mb-6">Læs også:</h3>
+              <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                {relatedPosts.map(post => (
+                  <a href={`/blog/${post.id}`} class="group block border border-kv-earth-200 bg-kv-earth-50 rounded-2xl overflow-hidden hover:shadow-md transition-all h-full">
+                    <div class="p-6 h-full flex flex-col">
+                      <h4 class="text-lg font-serif text-kv-green-900 group-hover:text-kv-green-600 transition-colors line-clamp-3">
+                        {post.data.title}
+                      </h4>
+                    </div>
+                  </a>
+                ))}
+              </div>
+            </div>
+          )}
+
+          <div class="flex items-center">
+            <a href="/blog" class="inline-flex items-center text-kv-green-700 font-medium hover:text-kv-green-500 transition-colors">
+              <svg class="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16l-4-4m0 0l4-4m-4 4h18" />
+              </svg>
+              Tilbage til alle artikler
+            </a>
+          </div>
+        </footer>
+      </div>
     </div>
   </article>
+
+  <script>
+    document.addEventListener('astro:page-load', () => {
+      const observer = new IntersectionObserver((entries) => {
+        let activeId = null;
+        
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            activeId = entry.target.getAttribute('id');
+          }
+        });
+
+        if (activeId) {
+          const updateToc = (listId) => {
+            const list = document.getElementById(listId);
+            if (!list) return;
+            
+            list.querySelectorAll('.toc-item').forEach(li => {
+              const link = li.querySelector('a');
+              if (link.getAttribute('href') === `#${activeId}`) {
+                li.classList.add('border-kv-green-500', 'bg-kv-green-500/10', 'text-kv-green-900', 'font-bold');
+                li.classList.remove('border-transparent', 'text-kv-green-700', 'hover:text-kv-green-500');
+              } else {
+                li.classList.remove('border-kv-green-500', 'bg-kv-green-500/10', 'text-kv-green-900', 'font-bold');
+                li.classList.add('border-transparent', 'text-kv-green-700', 'hover:text-kv-green-500');
+              }
+            });
+          };
+
+          updateToc('toc-desktop-list');
+          updateToc('toc-mobile-list');
+        }
+      }, { rootMargin: '-100px 0px -66% 0px' });
+
+      // Track all headings in the prose content
+      document.querySelectorAll('.prose h2, .prose h3, .prose h4').forEach((heading) => {
+        observer.observe(heading);
+      });
+    });
+  </script>
 </Layout>

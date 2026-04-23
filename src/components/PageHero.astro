@@ -2,11 +2,12 @@
 // src/components/PageHero.astro
 interface Props {
   isLarge?: boolean;
+  isCompact?: boolean;
   theme?: 'earth' | 'green';
 }
 
-const { isLarge = false, theme = 'earth' } = Astro.props;
-const paddingClasses = isLarge ? "pt-32 pb-32 lg:pt-48 lg:pb-48" : "pt-32 pb-24";
+const { isLarge = false, isCompact = false, theme = 'earth' } = Astro.props;
+const paddingClasses = isLarge ? "pt-32 pb-32 lg:pt-48 lg:pb-48" : isCompact ? "pt-24 pb-12 lg:pt-28 lg:pb-16" : "pt-32 pb-24";
 
 const themeClasses = theme === 'green' 
   ? "from-kv-green-50 via-kv-green-100 to-kv-green-200 border-kv-green-300/50" 

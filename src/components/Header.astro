@@ -103,18 +103,20 @@ const navItems = [
 </header>
 
 <script>
-  const btn = document.getElementById('mobile-menu-btn');
-  const menu = document.getElementById('mobile-menu');
-  const menuIcon = document.getElementById('menu-icon');
-  const closeIcon = document.getElementById('close-icon');
+  document.addEventListener('astro:page-load', () => {
+    const btn = document.getElementById('mobile-menu-btn');
+    const menu = document.getElementById('mobile-menu');
+    const menuIcon = document.getElementById('menu-icon');
+    const closeIcon = document.getElementById('close-icon');
 
-  if (btn && menu && menuIcon && closeIcon) {
-    btn.addEventListener('click', () => {
-      menu.classList.toggle('hidden');
-      menuIcon.classList.toggle('hidden');
-      closeIcon.classList.toggle('hidden');
-      const expanded = btn.getAttribute('aria-expanded') === 'true' || false;
-      btn.setAttribute('aria-expanded', String(!expanded));
-    });
-  }
+    if (btn && menu && menuIcon && closeIcon) {
+      btn.addEventListener('click', () => {
+        menu.classList.toggle('hidden');
+        menuIcon.classList.toggle('hidden');
+        closeIcon.classList.toggle('hidden');
+        const expanded = btn.getAttribute('aria-expanded') === 'true' || false;
+        btn.setAttribute('aria-expanded', String(!expanded));
+      });
+    }
+  });
 </script>
