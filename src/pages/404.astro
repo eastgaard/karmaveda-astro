@@ -30,9 +30,9 @@ import FuzzyRedirect from '@jdevalk/astro-seo-graph/FuzzyRedirect.astro';
         {/* 
           FuzzyRedirect component from @jdevalk/astro-seo-graph.
           It will automatically fetch the sitemap, calculate Levenshtein distance,
-          and either redirect (if similarity > 85%) or show a "Did you mean..." suggestion.
+          and either redirect (if similarity > 75%) or show a "Did you mean..." suggestion.
         */}
-        <FuzzyRedirect />
+        <FuzzyRedirect autoRedirectThreshold={0.75} />
       </div>
     </div>
 
