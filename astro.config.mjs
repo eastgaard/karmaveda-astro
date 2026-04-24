@@ -32,14 +32,7 @@ export default defineConfig({
   integrations: [
     sitemap({
       entryLimit: 1000,
-      chunks: {
-        'posts': (item) => {
-          if (new URL(item.url).pathname.startsWith('/blog/')) return item;
-        },
-        'pages': (item) => {
-          if (!new URL(item.url).pathname.startsWith('/blog/')) return item;
-        }
-      },
+
       serialize: (item) => {
         let filePath = '';
         const pathname = new URL(item.url).pathname.replace(/\/$/, '');
