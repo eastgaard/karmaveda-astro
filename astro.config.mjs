@@ -27,6 +27,10 @@ export default defineConfig({
     defaultStrategy: 'hover'
   },
   
+  build: {
+    inlineStylesheets: 'always'
+  },
+  
   vite: {
     plugins: [tailwindcss()],
     ssr: {

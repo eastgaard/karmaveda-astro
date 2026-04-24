@@ -67,6 +67,8 @@ const subtitleClasses = bgColor === 'green-900'
             <Image 
               src={imageSrc} 
               alt={imageAlt} 
+              widths={[400, 800, 1200]}
+              sizes="(max-width: 1024px) 100vw, 50vw"
               class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
             />
           )}
