@@ -8,7 +8,7 @@ import { ClientRouter } from 'astro:transitions';
 interface Props {
   title: string;
   description?: string;
-  image?: string;
+  image?: string | { src: string; width: number; height: number };
   author?: string;
   ogType?: 'website' | 'article';
   publishedTime?: Date;
@@ -29,7 +29,10 @@ const siteUrl = "https://www.karmaveda.dk";
 const currentUrl = new URL(Astro.url.pathname, siteUrl).toString();
 
 // Sørg for at billedet er en absolut URL
-const absoluteImageUrl = image.startsWith('http') ? image : new URL(image, siteUrl).toString();
+const imageUrl = typeof image === 'string' ? image : image.src;
+const imageWidth = typeof image === 'object' ? image.width : undefined;
+const imageHeight = typeof image === 'object' ? image.height : undefined;
+const absoluteImageUrl = imageUrl.startsWith('http') ? imageUrl : new URL(imageUrl, siteUrl).toString();
 ---
 
 <!doctype html>
@@ -51,6 +54,8 @@ const absoluteImageUrl = image.startsWith('http') ? image : new URL(image, siteU
       inLanguage="da-DK"
       locale="da_DK"
       ogImage={absoluteImageUrl}
+      ogImageWidth={imageWidth}
+      ogImageHeight={imageHeight}
       ogImageAlt={title}
       ogType={ogType}
       author={author}

@@ -51,7 +51,7 @@ relatedPosts.sort((a, b) => relatedSlugs.indexOf(a.id) - relatedSlugs.indexOf(b.
 <Layout 
   title={`${pageTitle} | Karmaveda`} 
   description={entry.data.seo?.description || entry.data.description}
-  image={entry.data.image ? entry.data.image.src : undefined}
+  image={entry.data.image}
   author={entry.data.author}
   ogType="article"
   publishedTime={entry.data.publishDate}
