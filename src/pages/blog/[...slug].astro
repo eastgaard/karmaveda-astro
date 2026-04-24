@@ -66,6 +66,8 @@ relatedPosts.sort((a, b) => relatedSlugs.indexOf(a.id) - relatedSlugs.indexOf(b.
           alt={entry.data.title} 
           widths={[400, 800, 1200, 1600]}
           sizes="100vw"
+          loading="eager"
+          fetchpriority="high"
           class="w-full h-full object-cover object-center md:object-right" 
         />
         <div class="absolute inset-0 bg-kv-green-900/30 mix-blend-multiply"></div>
