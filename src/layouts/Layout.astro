@@ -41,6 +41,7 @@ const absoluteImageUrl = image.startsWith('http') ? image : new URL(image, siteU
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <meta name="theme-color" content="#3a5a40" />
     <meta name="generator" content={Astro.generator} />
+    <link rel="alternate" type="application/rss+xml" title="Karmaveda RSS Feed" href={new URL("feed.xml", siteUrl).toString()} />
     
     <Seo
       url={currentUrl}

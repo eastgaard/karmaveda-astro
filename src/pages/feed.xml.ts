@@ -2,17 +2,17 @@ import rss from '@astrojs/rss';
 import { getCollection } from 'astro:content';
 
 export async function GET(context: any) {
-  const pages = await getCollection('pages');
+  const blog = await getCollection('blog');
   
   return rss({
-    title: 'Karmaveda',
-    description: 'Karmaveda - Din vej til naturlig sundhed',
+    title: 'Karmaveda Blog',
+    description: 'Karmaveda - Din vej til naturlig sundhed og balance',
     site: context.site,
-    items: pages.map((page) => ({
-      title: page.data.seo?.title || page.data.title,
-      description: page.data.seo?.description || page.data.description || '',
-      pubDate: page.data.publishDate || new Date(),
-      link: `/${page.id}/`,
+    items: blog.map((post) => ({
+      title: post.data.seo?.title || post.data.title,
+      description: post.data.seo?.description || post.data.description || '',
+      pubDate: post.data.publishDate || new Date(),
+      link: `/blog/${post.id}/`,
     })),
   });
 }

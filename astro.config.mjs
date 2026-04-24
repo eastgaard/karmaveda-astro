@@ -22,6 +22,11 @@ function gitLastmod(filePath) {
 export default defineConfig({
   site: 'https://www.karmaveda.dk',
   
+  prefetch: {
+    prefetchAll: true,
+    defaultStrategy: 'hover'
+  },
+  
   vite: {
     plugins: [tailwindcss()],
     ssr: {
