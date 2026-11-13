@@ -4,9 +4,10 @@ interface Props {
   isLarge?: boolean;
   isCompact?: boolean;
   theme?: 'earth' | 'green';
+  as?: 'section' | 'header';
 }
 
-const { isLarge = false, isCompact = false, theme = 'earth' } = Astro.props;
+const { isLarge = false, isCompact = false, theme = 'earth', as: Tag = 'section' } = Astro.props;
 const paddingClasses = isLarge ? "pt-32 pb-32 lg:pt-48 lg:pb-48" : isCompact ? "pt-24 pb-12 lg:pt-28 lg:pb-16" : "pt-32 pb-24";
 
 const themeClasses = theme === 'green' 
@@ -16,16 +17,16 @@ const themeClasses = theme === 'green'
 const circleColor = theme === 'green' ? "text-kv-green-300" : "text-kv-earth-300";
 ---
 
-<section class={`relative w-full bg-gradient-to-br ${themeClasses} bg-[length:200%_200%] animate-gradient-shift border-b overflow-hidden ${paddingClasses}`}>
+<Tag class={`relative w-full bg-gradient-to-br ${themeClasses} bg-[length:200%_200%] animate-gradient-shift border-b overflow-hidden ${paddingClasses}`}>
   <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
     <slot />
   </div>
   
   <!-- Decorative subtle pattern -->
-  <svg class={`absolute top-0 right-0 -mr-20 -mt-20 h-96 w-96 ${circleColor} opacity-20 animate-float pointer-events-none`} fill="currentColor" viewBox="0 0 100 100">
+  <svg class={`absolute top-0 right-0 -mr-20 -mt-20 h-96 w-96 ${circleColor} opacity-20 animate-float pointer-events-none`} fill="currentColor" viewBox="0 0 100 100" aria-hidden="true">
     <circle cx="50" cy="50" r="50" />
   </svg>
-  <svg class={`absolute bottom-0 left-0 -ml-20 -mb-20 h-96 w-96 ${circleColor} opacity-20 animate-float-delayed pointer-events-none`} fill="currentColor" viewBox="0 0 100 100">
+  <svg class={`absolute bottom-0 left-0 -ml-20 -mb-20 h-96 w-96 ${circleColor} opacity-20 animate-float-delayed pointer-events-none`} fill="currentColor" viewBox="0 0 100 100" aria-hidden="true">
     <circle cx="50" cy="50" r="50" />
   </svg>
-</section>
+</Tag>

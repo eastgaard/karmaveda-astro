@@ -8,14 +8,14 @@ const navItems = [
     label: 'Behandlinger',
     href: '#',
     children: [
-      { label: 'Oversigt & Priser', href: '/behandlinger' },
-      { label: 'Livsstilskonsultation', href: '/livsstilskonsultation' },
-      { label: 'Personlige Meditationer', href: '/skraeddersyede-meditationer' }
+      { label: 'Oversigt & Priser', href: '/behandlinger/' },
+      { label: 'Livsstilskonsultation', href: '/livsstilskonsultation/' },
+      { label: 'Personlige Meditationer', href: '/skraeddersyede-meditationer/' }
     ]
   },
-  { label: 'Meditation', href: '/meditation' },
-  { label: 'Om Karmaveda', href: '/om-os' },
-  { label: 'Blog', href: '/blog' },
+  { label: 'Meditation', href: '/meditation/' },
+  { label: 'Om Karmaveda', href: '/om-os/' },
+  { label: 'Blog', href: '/blog/' },
 ];
 ---
 
@@ -32,13 +32,13 @@ const navItems = [
       </div>
 
       <!-- Desktop Navigation -->
-      <nav class="hidden md:flex space-x-8 items-center">
+      <nav aria-label="Hovednavigation" class="hidden md:flex space-x-8 items-center">
         {navItems.map((item) => (
           item.children ? (
             <div class="relative group">
-              <button class="flex items-center text-kv-text hover:text-kv-green-500 px-3 py-2 text-sm font-medium transition-colors">
+              <button type="button" aria-haspopup="true" class="flex items-center text-kv-text hover:text-kv-green-500 px-3 py-2 text-sm font-medium transition-colors">
                 {item.label}
-                <svg class="ml-1 h-4 w-4 text-kv-green-500 transition-transform group-hover:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg class="ml-1 h-4 w-4 text-kv-green-500 transition-transform group-hover:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                 </svg>
               </button>
@@ -60,16 +60,16 @@ const navItems = [
         ))}
         
         <!-- CTA Button -->
-        <a href="/om-os" class="ml-4 inline-flex items-center justify-center px-6 py-2.5 border border-transparent rounded-full shadow-sm text-sm font-medium text-white bg-kv-green-500 hover:bg-kv-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-kv-green-500 transition-colors">
+        <a href="/om-os/" class="ml-4 inline-flex items-center justify-center px-6 py-2.5 border border-transparent rounded-full shadow-sm text-sm font-medium text-white bg-kv-green-500 hover:bg-kv-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-kv-green-500 transition-colors">
           Kontakt
         </a>
       </nav>
 
       <!-- Mobile menu button -->
       <div class="flex items-center md:hidden">
-        <button id="mobile-menu-btn" class="text-kv-text hover:text-kv-green-500 focus:outline-none p-2" aria-expanded="false" aria-controls="mobile-menu">
+        <button id="mobile-menu-btn" type="button" class="text-kv-text hover:text-kv-green-500 focus:outline-none p-2" aria-expanded="false" aria-controls="mobile-menu">
           <span class="sr-only">Åbn hovedmenu</span>
-          <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
             <path id="menu-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
             <path id="close-icon" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
           </svg>
@@ -79,7 +79,7 @@ const navItems = [
   </div>
 
   <!-- Mobile Menu Panel -->
-  <div id="mobile-menu" class="md:hidden hidden bg-white border-t border-kv-earth-100 absolute w-full shadow-lg">
+  <nav id="mobile-menu" aria-label="Mobilnavigation" class="md:hidden hidden bg-white border-t border-kv-earth-100 absolute w-full shadow-lg">
     <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
       {navItems.map((item) => (
         item.children ? (
@@ -95,11 +95,11 @@ const navItems = [
           <a href={item.href} class="block px-3 py-2 rounded-md text-base font-medium text-kv-text hover:text-kv-green-500 hover:bg-kv-earth-50 transition-colors">{item.label}</a>
         )
       ))}
-      <a href="/om-os" class="block w-full mt-4 text-center px-4 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-kv-green-500 hover:bg-kv-green-700 transition-colors">
+      <a href="/om-os/" class="block w-full mt-4 text-center px-4 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-kv-green-500 hover:bg-kv-green-700 transition-colors">
         Kontakt
       </a>
     </div>
-  </div>
+  </nav>
 </header>
 
 <script>

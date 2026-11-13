@@ -1,25 +1,45 @@
 ---
 import { getCollection, render } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
 
 export async function getStaticPaths() {
+  // Sider der allerede har en dedikeret .astro side i src/pages/
+  const dedicatedAstroPages = new Set([
+    'index',
+    'behandlinger',
+    'livsstilskonsultation',
+    'meditation',
+    'skraeddersyede-meditationer',
+    'om-os',
+    'om-nina-riisager',
+  ]);
+
   const pages = await getCollection('pages');
-  return pages.map(page => ({
-    params: { slug: page.id },
-    props: { page },
-  }));
+  return pages
+    .filter((page) => !dedicatedAstroPages.has(page.id))
+    .map((page) => ({
+      params: { slug: page.id },
+      props: { page },
+    }));
 }
 
 const { page } = Astro.props;
 const { Content } = await render(page);
-
 ---
 
 <Layout 
-  title={page.data.seo?.title || page.data.title}
-  description={page.data.seo?.description}
+  title={page.data.seo?.title || `${page.data.title} | Karmaveda`}
+  description={page.data.seo?.description || page.data.description}
 >
-  <main class="container mx-auto px-4 py-12 prose prose-stone lg:prose-xl">
-    <Content />
-  </main>
+  <article>
+    <PageHero as="header" isCompact={true}>
+      <h1 class="text-4xl md:text-5xl font-serif text-kv-green-900 mb-4 leading-tight font-bold">
+        {page.data.title}
+      </h1>
+    </PageHero>
+    <div class="container mx-auto px-4 py-12 prose prose-stone lg:prose-xl">
+      <Content />
+    </div>
+  </article>
 </Layout>

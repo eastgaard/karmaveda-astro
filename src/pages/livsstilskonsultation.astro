@@ -2,13 +2,30 @@
 import Layout from '../layouts/Layout.astro';
 import TextWithImage from '../components/TextWithImage.astro';
 import PageHero from '../components/PageHero.astro';
-import img29 from '../assets/29-445c08a0.png';
+import img29Real from '../assets/29-445c08a0.png';
 import img05 from '../assets/05-3a9505b5.jpg';
+
+const services = [
+  {
+    id: 'ayurvedisk-livsstilskonsultation',
+    name: 'Ayurvedisk Livsstilskonsultation – Komplet Forløb',
+    description:
+      'Skræddersyet ayurvedisk forløb med 4 live konsultationer (fysisk i Stenløse eller online) + 4 mailkonsultationer inkl. personlig konstitutionsanalyse.',
+    offers: [
+      {
+        name: '4 live konsultationer + 4 mailkonsultationer',
+        price: 4444,
+        priceCurrency: 'DKK',
+      },
+    ],
+  },
+];
 ---
 
 <Layout 
   title="Ayurvedisk Livsstilskonsultation | Karmaveda" 
   description="Er du klar til forandring? Et skræddersyet ayurvedisk forløb der hjælper dig med fordøjelse, søvn, stress og skaber daglig balance og velvære."
+  services={services}
 >
   <!-- Hero Section -->
   <PageHero>
@@ -23,7 +40,7 @@ import img05 from '../assets/05-3a9505b5.jpg';
 
   <!-- Er du klar til forandring? -->
   <TextWithImage 
-    imageSrc={img29} 
+    imageSrc={img29Real} 
     imageAlt="Er du klar til forandring" 
     imagePosition="right"
     title="Er du klar til forandring?"
@@ -32,21 +49,21 @@ import img05 from '../assets/05-3a9505b5.jpg';
   >
     <div class="space-y-6">
       <div class="bg-kv-earth-50 p-6 rounded-2xl border border-kv-earth-200">
-        <h4 class="text-lg font-serif text-kv-green-900 mb-2">Har du udfordringer...</h4>
+        <h3 class="text-lg font-serif text-kv-green-900 mb-2">Har du udfordringer...</h3>
         <p class="text-sm text-kv-text/80 leading-relaxed font-light">
           ...med fordøjelsen, søvn, stress, vægt, hovedpine, allergi, hormonelle ubalancer eller føler du dig generelt uden overskud og livsglæde?
         </p>
       </div>
       
       <div class="bg-kv-earth-50 p-6 rounded-2xl border border-kv-earth-200">
-        <h4 class="text-lg font-serif text-kv-green-900 mb-2">Ønsker du en dybere forståelse...</h4>
+        <h3 class="text-lg font-serif text-kv-green-900 mb-2">Ønsker du en dybere forståelse...</h3>
         <p class="text-sm text-kv-text/80 leading-relaxed font-light">
           ...af dit helbred og at lære at skabe daglig balance og velvære i dit liv?
         </p>
       </div>
       
       <div class="bg-kv-earth-50 p-6 rounded-2xl border border-kv-earth-200">
-        <h4 class="text-lg font-serif text-kv-green-900 mb-2">Vil du have hjælp...</h4>
+        <h3 class="text-lg font-serif text-kv-green-900 mb-2">Vil du have hjælp...</h3>
         <p class="text-sm text-kv-text/80 leading-relaxed font-light">
           ...til at lave ændringer i dine daglige rutiner, som kan have en stor betydning for dit helbred og dit generelle velvære?
         </p>
@@ -70,7 +87,7 @@ import img05 from '../assets/05-3a9505b5.jpg';
       Jeg anbefaler minimum tre konsultationer for optimal støtte og vejledning. Du får hjemmearbejde mellem hver konsultation for at få integreret de nye sunde vaner og praksisser i din hverdag.
     </p>
     <div class="bg-white p-6 rounded-2xl border border-kv-earth-200 mt-6">
-      <h4 class="font-serif text-lg text-kv-green-900 mb-4 border-b border-kv-earth-100 pb-2">Du kan forvente:</h4>
+      <h3 class="font-serif text-lg text-kv-green-900 mb-4 border-b border-kv-earth-100 pb-2">Du kan forvente:</h3>
       <ul class="space-y-2 list-disc pl-5 text-sm text-kv-text/80">
         <li>Et skræddersyet personligt forløb.</li>
         <li>En helhedsorienteret tilgang med fokus på din samlede livsstil.</li>
@@ -81,50 +98,50 @@ import img05 from '../assets/05-3a9505b5.jpg';
   </TextWithImage>
 
   <!-- Steps / Timeline -->
-  <section class="py-24 bg-white">
+  <section aria-labelledby="process-heading" class="py-24 bg-white">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-16">
         <span class="text-sm font-semibold text-kv-green-600 uppercase tracking-widest mb-4 block">Processen</span>
-        <h2 class="text-3xl md:text-4xl font-serif text-kv-green-900">Et forløb skræddersyet til dig</h2>
+        <h2 id="process-heading" class="text-3xl md:text-4xl font-serif text-kv-green-900">Et forløb skræddersyet til dig</h2>
       </div>
       
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <ol class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 list-none p-0">
         <!-- Step 1 -->
-        <div class="relative p-8 bg-kv-earth-50 rounded-3xl border border-kv-earth-200 hover:shadow-lg transition-shadow">
-          <div class="absolute -top-6 left-8 w-12 h-12 bg-kv-green-600 text-white rounded-full flex items-center justify-center text-xl font-bold font-serif shadow-md">1</div>
-          <h4 class="text-xl font-serif text-kv-green-900 mt-4 mb-4">Første konsultation</h4>
+        <li class="relative p-8 bg-kv-earth-50 rounded-3xl border border-kv-earth-200 hover:shadow-lg transition-shadow">
+          <div class="absolute -top-6 left-8 w-12 h-12 bg-kv-green-600 text-white rounded-full flex items-center justify-center text-xl font-bold font-serif shadow-md" aria-hidden="true">1</div>
+          <h3 class="text-xl font-serif text-kv-green-900 mt-4 mb-4">Første konsultation</h3>
           <p class="text-kv-text/70 text-sm font-light">Vi tager en grundig snak ud fra specifikke spørgsmål og med fokus på det, du ønsker hjælp til.</p>
-        </div>
+        </li>
         
         <!-- Step 2 -->
-        <div class="relative p-8 bg-kv-earth-50 rounded-3xl border border-kv-earth-200 hover:shadow-lg transition-shadow">
-          <div class="absolute -top-6 left-8 w-12 h-12 bg-kv-green-600 text-white rounded-full flex items-center justify-center text-xl font-bold font-serif shadow-md">2</div>
-          <h4 class="text-xl font-serif text-kv-green-900 mt-4 mb-4">Personlig Analyse</h4>
+        <li class="relative p-8 bg-kv-earth-50 rounded-3xl border border-kv-earth-200 hover:shadow-lg transition-shadow">
+          <div class="absolute -top-6 left-8 w-12 h-12 bg-kv-green-600 text-white rounded-full flex items-center justify-center text-xl font-bold font-serif shadow-md" aria-hidden="true">2</div>
+          <h3 class="text-xl font-serif text-kv-green-900 mt-4 mb-4">Personlig Analyse</h3>
           <p class="text-kv-text/70 text-sm font-light">Efter første konsultation udarbejder jeg en analyse baseret på vores snak, som præsenteres på næste konsultation.</p>
-        </div>
+        </li>
         
         <!-- Step 3 -->
-        <div class="relative p-8 bg-kv-earth-50 rounded-3xl border border-kv-earth-200 hover:shadow-lg transition-shadow">
-          <div class="absolute -top-6 left-8 w-12 h-12 bg-kv-green-600 text-white rounded-full flex items-center justify-center text-xl font-bold font-serif shadow-md">3</div>
-          <h4 class="text-xl font-serif text-kv-green-900 mt-4 mb-4">Opfølgende forløb</h4>
+        <li class="relative p-8 bg-kv-earth-50 rounded-3xl border border-kv-earth-200 hover:shadow-lg transition-shadow">
+          <div class="absolute -top-6 left-8 w-12 h-12 bg-kv-green-600 text-white rounded-full flex items-center justify-center text-xl font-bold font-serif shadow-md" aria-hidden="true">3</div>
+          <h3 class="text-xl font-serif text-kv-green-900 mt-4 mb-4">Opfølgende forløb</h3>
           <p class="text-kv-text/70 text-sm font-light">Her præsenteres du for forslag til daglige rutiner. Vi går stille og roligt til værks, så du får integreret de nye tiltag.</p>
-        </div>
+        </li>
         
         <!-- Step 4 -->
-        <div class="relative p-8 bg-kv-earth-50 rounded-3xl border border-kv-earth-200 hover:shadow-lg transition-shadow">
-          <div class="absolute -top-6 left-8 w-12 h-12 bg-kv-green-600 text-white rounded-full flex items-center justify-center text-xl font-bold font-serif shadow-md">4</div>
-          <h4 class="text-xl font-serif text-kv-green-900 mt-4 mb-4">Nå dine mål</h4>
+        <li class="relative p-8 bg-kv-earth-50 rounded-3xl border border-kv-earth-200 hover:shadow-lg transition-shadow">
+          <div class="absolute -top-6 left-8 w-12 h-12 bg-kv-green-600 text-white rounded-full flex items-center justify-center text-xl font-bold font-serif shadow-md" aria-hidden="true">4</div>
+          <h3 class="text-xl font-serif text-kv-green-900 mt-4 mb-4">Nå dine mål</h3>
           <p class="text-kv-text/70 text-sm font-light">De efterfølgende konsultationer tilrettelægges, så du løbende får implementeret de tiltag, der skal til.</p>
-        </div>
-      </div>
+        </li>
+      </ol>
     </div>
   </section>
 
   <!-- CTA / Kampagne -->
-  <section class="py-24 bg-kv-green-900 relative overflow-hidden">
+  <section aria-labelledby="pakke-heading" class="py-24 bg-kv-green-900 relative overflow-hidden">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
       <span class="inline-block px-4 py-1.5 bg-red-500 text-white text-sm font-bold tracking-widest uppercase rounded-full mb-8 shadow-md">Unik mulighed lige nu</span>
-      <h2 class="text-3xl md:text-5xl font-serif text-white mb-8">Er du klar til at tage skridtet?</h2>
+      <h2 id="pakke-heading" class="text-3xl md:text-5xl font-serif text-white mb-8">Er du klar til at tage skridtet?</h2>
       
       <div class="bg-white/10 backdrop-blur-sm p-10 rounded-3xl border border-white/20 shadow-2xl mb-12">
         <p class="text-2xl font-serif text-kv-earth-100 mb-4">
@@ -142,11 +159,10 @@ import img05 from '../assets/05-3a9505b5.jpg';
       </p>
       
       <div class="flex flex-wrap justify-center gap-6">
-        <a href="/booking" class="px-8 py-4 bg-kv-earth-400 text-kv-green-950 font-bold rounded-full hover:bg-kv-earth-300 transition-colors shadow-lg transform hover:-translate-y-1">Få gratis konsultation</a>
+        <a href="/om-os/#kontakt" class="px-8 py-4 bg-kv-earth-400 text-kv-green-950 font-bold rounded-full hover:bg-kv-earth-300 transition-colors shadow-lg transform hover:-translate-y-1">Få gratis forsamtale</a>
         <a href="mailto:nina@karmaveda.dk" class="px-8 py-4 bg-transparent border border-kv-earth-400 text-kv-earth-100 font-bold rounded-full hover:bg-white/10 transition-colors">Kontakt Mig</a>
       </div>
     </div>
-    
   </section>
 
 </Layout>

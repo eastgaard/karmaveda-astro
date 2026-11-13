@@ -1,5 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
+import Layout from '../layouts/Layout.astro';
 
 let posts: any[] = [];
 let error = '';
@@ -10,7 +11,15 @@ try {
 }
 ---
 
-<pre>
-  {JSON.stringify(posts, null, 2)}
-</pre>
-<div>Error: {error}</div>
+<Layout
+  title="Blog Debug Oversigt (Intern Test) | Karmaveda"
+  description="Intern testside til kontrol af blogkollektionens data og struktur under udvikling på Karmaveda."
+  noindex={true}
+  hasMarkdownAlternate={false}
+>
+  <section class="max-w-5xl mx-auto px-4 py-16">
+    <h1 class="text-3xl font-serif text-kv-green-900 mb-6">Blog Debug Oversigt</h1>
+    {error && <p class="text-red-600 mb-4">Error: {error}</p>}
+    <pre class="bg-kv-earth-50 p-6 rounded-2xl overflow-x-auto text-xs">{JSON.stringify(posts, null, 2)}</pre>
+  </section>
+</Layout>

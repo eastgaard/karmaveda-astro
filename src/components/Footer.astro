@@ -1,8 +1,6 @@
 ---
 // src/components/Footer.astro
 import Logo from './Logo.astro';
-
-const currentYear = new Date().getFullYear();
 ---
 
 <footer class="bg-kv-green-900 text-kv-earth-100 pt-16 pb-8 border-t border-kv-green-800">
@@ -22,33 +20,35 @@ const currentYear = new Date().getFullYear();
 
       <!-- Contact Info -->
       <div class="col-span-1">
-        <h3 class="text-lg font-serif text-white mb-4">Kontakt</h3>
-        <ul class="space-y-3 text-sm text-kv-earth-300">
-          <li class="flex items-start">
-            <svg class="h-5 w-5 mr-2 text-kv-green-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-            </svg>
-            <span>Dam Holme 14<br />3660 Stenløse</span>
-          </li>
-          <li class="flex items-center">
-            <svg class="h-5 w-5 mr-2 text-kv-green-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-            </svg>
-            <a href="tel:+4529725904" class="hover:text-white transition-colors">+45 29 72 59 04</a>
-          </li>
-          <li class="flex items-center">
-            <svg class="h-5 w-5 mr-2 text-kv-green-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-            </svg>
-            <a href="mailto:nina@karmaveda.dk" class="hover:text-white transition-colors">nina@karmaveda.dk</a>
-          </li>
-        </ul>
+        <h2 class="text-lg font-serif text-white mb-4">Kontakt</h2>
+        <address class="not-italic">
+          <ul class="space-y-3 text-sm text-kv-earth-300">
+            <li class="flex items-start">
+              <svg class="h-5 w-5 mr-2 text-kv-green-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+              </svg>
+              <span>Dam Holme 14<br />3660 Stenløse</span>
+            </li>
+            <li class="flex items-center">
+              <svg class="h-5 w-5 mr-2 text-kv-green-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+              </svg>
+              <a href="tel:+4529725904" class="hover:text-white transition-colors">+45 29 72 59 04</a>
+            </li>
+            <li class="flex items-center">
+              <svg class="h-5 w-5 mr-2 text-kv-green-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+              </svg>
+              <a href="mailto:nina@karmaveda.dk" class="hover:text-white transition-colors">nina@karmaveda.dk</a>
+            </li>
+          </ul>
+        </address>
       </div>
 
       <!-- Business Info -->
       <div class="col-span-1">
-        <h3 class="text-lg font-serif text-white mb-4">Virksomhed</h3>
+        <h2 class="text-lg font-serif text-white mb-4">Virksomhed</h2>
         <ul class="space-y-2 text-sm text-kv-earth-300">
           <li>CVR: DK34226679</li>
           <li>Reg: 8117 Konto: 0002909248</li>
@@ -60,8 +60,8 @@ const currentYear = new Date().getFullYear();
     </div>
     
     <div class="border-t border-kv-green-800 pt-8 flex flex-col md:flex-row justify-between items-center">
-      <!-- Removed Copyright Text -->
-      <div class="flex space-x-6">
+      <!-- Social Links -->
+      <nav aria-label="Sociale medier" class="flex space-x-6">
         <!-- Facebook -->
         <a href="https://www.facebook.com/Karmavedadk" target="_blank" rel="noopener noreferrer" class="text-kv-earth-400 hover:text-white transition-colors">
           <span class="sr-only">Facebook</span>
@@ -90,7 +90,7 @@ const currentYear = new Date().getFullYear();
             <path fill-rule="evenodd" d="m64.062 88.234c-1.1406 0-2.2969-0.28125-3.3594-0.85938l-29.531-16c-0.34375-0.1875-0.73438-0.28125-1.1094-0.28125h-14.438c-3.875 0-7.0312-3.1562-7.0312-7.0312v-28.125c0-3.875 3.1562-7.0312 7.0312-7.0312h14.438c0.39062 0 0.78125-0.09375 1.1094-0.28125l29.531-16c2.2031-1.1875 4.7969-1.1406 6.9531 0.14062s3.4375 3.5312 3.4375 6.0469v62.391c0 2.5-1.2812 4.7656-3.4375 6.0469-1.1094 0.64062-2.3594 0.98438-3.5938 0.98438zm15.125-24.703c1.8281-3.7656 2.8438-8.5625 2.8438-13.531s-1-9.7656-2.8438-13.531c-0.5625-1.1719-1.9688-1.6562-3.125-1.0781-1.1719 0.5625-1.6562 1.9688-1.0781 3.125 1.5312 3.1406 2.3594 7.2188 2.3594 11.469s-0.84375 8.3281-2.3594 11.469c-0.5625 1.1719-0.078125 2.5625 1.0781 3.125 0.32812 0.15625 0.67188 0.23438 1.0156 0.23438 0.875 0.03125 1.7031-0.45312 2.1094-1.2812zm7.375 6.3438c3.1719-5.8125 4.8438-12.688 4.8438-19.875s-1.6719-14.062-4.8438-19.875c-0.625-1.1406-2.0469-1.5469-3.1875-0.9375-1.1406 0.625-1.5625 2.0469-0.9375 3.1875 2.7969 5.125 4.2812 11.219 4.2812 17.625s-1.4844 12.5-4.2812 17.625c-0.625 1.1406-0.20312 2.5625 0.9375 3.1875 0.35938 0.20312 0.73438 0.28125 1.125 0.28125 0.82812 0 1.6406-0.4375 2.0625-1.2188z" clip-rule="evenodd" />
           </svg>
         </a>
-      </div>
+      </nav>
     </div>
   </div>
 </footer>

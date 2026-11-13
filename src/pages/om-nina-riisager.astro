@@ -9,8 +9,10 @@ import imgNina3 from '../assets/09 (2).jpg';
 ---
 
 <Layout 
-  title="Om Nina Riisager | Karmaveda" 
+  title="Om Nina Riisager – Stifter af Karmaveda" 
   description="Læs mere om Nina Riisager, stifteren af Karmaveda, hendes baggrund indenfor Ayurveda, mindfulness, meditation og yoga."
+  ogType="profile"
+  pageType="ProfilePage"
 >
   <!-- Hero Section -->
   <PageHero>
@@ -25,7 +27,7 @@ import imgNina3 from '../assets/09 (2).jpg';
   <!-- TextWithImage Section -->
   <TextWithImage 
     imageSrc={imgNina1} 
-    imageAlt="Nina Riisager" 
+    imageAlt="Nina Riisager, Ayurvedisk sundheds- og livsstilskonsulent" 
     imagePosition="left"
     title="Min Rejse Til Balance"
     subtitle="Om Mig"
@@ -37,60 +39,62 @@ import imgNina3 from '../assets/09 (2).jpg';
     <p>
       Jeg er uddannet Ayurvedisk sundheds- og livsstilskonsulent samt indenfor mindfulness, meditation, yoga, NADA øreakupunktur, akupressur og følelseshealing og så er jeg Access Consciousness(R) Bars behandler. Alt sammen viden og redskaber der styrker dit mentale og fysiske helbred, så du får mere overskud, nærvær og glæde i hverdagen.
     </p>
-    <div class="bg-kv-earth-50 p-6 rounded-2xl border-l-4 border-kv-green-500 my-6 shadow-sm">
-      <p class="italic text-kv-green-900 m-0">
-        "Jeg har prøvet på egen krop, hvad det vil sige at føle, at man ikke slår til og være fanget af hverdagens hamsterhjul, haft stress og oplevet hvilken total livsomvæltning meditation, yoga, Ayurveda og mindfulness har været for mig."
-      </p>
-    </div>
+    <blockquote class="bg-kv-earth-50 p-6 rounded-2xl border-l-4 border-kv-green-500 my-6 shadow-sm italic text-kv-green-900">
+      "Jeg har prøvet på egen krop, hvad det vil sige at føle, at man ikke slår til og være fanget af hverdagens hamsterhjul, haft stress og oplevet hvilken total livsomvæltning meditation, yoga, Ayurveda og mindfulness har været for mig."
+    </blockquote>
     <p>
       Mit liv ændrede sig selvfølgelig ikke fra den ene dag til den anden. Det var en proces over flere måneder, hvor jeg bevidst arbejdede med mit mindset, med at ændre mine vaner og gennem ro og nærvær finde frem til dét, der gør mig glad og i balance.
     </p>
   </TextWithImage>
 
   <!-- Latest Articles Section -->
-  <section class="py-24 bg-kv-earth-50 border-t border-kv-earth-200">
+  <section aria-labelledby="blog-teaser-heading" class="py-24 bg-kv-earth-50 border-t border-kv-earth-200">
     <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-16">
-        <h2 class="text-3xl md:text-4xl font-serif text-kv-green-900 mb-4">Læs med på bloggen</h2>
+        <h2 id="blog-teaser-heading" class="text-3xl md:text-4xl font-serif text-kv-green-900 mb-4">Læs med på bloggen</h2>
         <p class="text-kv-text/70">Få endnu mere inspiration til en hverdag i balance.</p>
       </div>
       
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <a href="/blog/taknemmelighed" class="group block bg-white rounded-3xl overflow-hidden hover:shadow-xl transition-all h-full border border-kv-earth-100">
-          <div class="h-48 bg-kv-green-100 overflow-hidden relative">
-            <Image src={imgNina2} class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="Taknemmelighed" />
-          </div>
-          <div class="p-8">
-            <span class="text-xs font-semibold text-kv-green-600 uppercase tracking-widest mb-3 block">Mindset</span>
-            <h3 class="text-2xl font-serif text-kv-green-900 group-hover:text-kv-green-600 transition-colors mb-4">
-              Taknemmelighed
-            </h3>
-            <p class="text-kv-text/70 font-light line-clamp-3">
-              Læs om hvordan taknemmelighed kan ændre din hverdag og dit mindset.
-            </p>
-          </div>
-        </a>
+        <article class="bg-white rounded-3xl overflow-hidden hover:shadow-xl transition-all h-full border border-kv-earth-100">
+          <a href="/blog/taknemmelighed/" class="group block h-full">
+            <div class="h-48 bg-kv-green-100 overflow-hidden relative">
+              <Image src={imgNina2} class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="Taknemmelighed" />
+            </div>
+            <div class="p-8">
+              <span class="text-xs font-semibold text-kv-green-600 uppercase tracking-widest mb-3 block">Mindset</span>
+              <h3 class="text-2xl font-serif text-kv-green-900 group-hover:text-kv-green-600 transition-colors mb-4">
+                Taknemmelighed
+              </h3>
+              <p class="text-kv-text/70 font-light line-clamp-3">
+                Læs om hvordan taknemmelighed kan ændre din hverdag og dit mindset.
+              </p>
+            </div>
+          </a>
+        </article>
         
-        <a href="/blog/de-7-grundprincipper-i-mindfulness" class="group block bg-white rounded-3xl overflow-hidden hover:shadow-xl transition-all h-full border border-kv-earth-100">
-          <div class="h-48 bg-kv-green-100 overflow-hidden relative">
-            <Image src={imgNina3} class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="Mindfulness" />
-          </div>
-          <div class="p-8">
-            <span class="text-xs font-semibold text-kv-green-600 uppercase tracking-widest mb-3 block">Mindfulness</span>
-            <h3 class="text-2xl font-serif text-kv-green-900 group-hover:text-kv-green-600 transition-colors mb-4">
-              De 7 grundprincipper i mindfulness
-            </h3>
-            <p class="text-kv-text/70 font-light line-clamp-3">
-              En introduktion til de syv principper, der udgør fundamentet i mindfulness.
-            </p>
-          </div>
-        </a>
+        <article class="bg-white rounded-3xl overflow-hidden hover:shadow-xl transition-all h-full border border-kv-earth-100">
+          <a href="/blog/de-7-grundprincipper-i-mindfulness/" class="group block h-full">
+            <div class="h-48 bg-kv-green-100 overflow-hidden relative">
+              <Image src={imgNina3} class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="De 7 grundprincipper i mindfulness" />
+            </div>
+            <div class="p-8">
+              <span class="text-xs font-semibold text-kv-green-600 uppercase tracking-widest mb-3 block">Mindfulness</span>
+              <h3 class="text-2xl font-serif text-kv-green-900 group-hover:text-kv-green-600 transition-colors mb-4">
+                De 7 grundprincipper i mindfulness
+              </h3>
+              <p class="text-kv-text/70 font-light line-clamp-3">
+                En introduktion til de syv principper, der udgør fundamentet i mindfulness.
+              </p>
+            </div>
+          </a>
+        </article>
       </div>
       
       <div class="mt-16 text-center">
-        <a href="/blog" class="inline-flex items-center text-kv-green-800 font-medium hover:text-kv-green-900 transition-colors px-8 py-4 border-2 border-kv-green-800 rounded-full hover:bg-kv-green-50">
+        <a href="/blog/" class="inline-flex items-center text-kv-green-800 font-medium hover:text-kv-green-900 transition-colors px-8 py-4 border-2 border-kv-green-800 rounded-full hover:bg-kv-green-50">
           Se alle artikler
-          <svg class="w-5 h-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <svg class="w-5 h-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
           </svg>
         </a>

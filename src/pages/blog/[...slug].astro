@@ -1,8 +1,9 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCollection, render } from 'astro:content';
 import { Image } from 'astro:assets';
 import Layout from '../../layouts/Layout.astro';
 import PageHero from '../../components/PageHero.astro';
+import relatedPostsData from '../../data/related-posts.json';
 
 export async function getStaticPaths() {
   const blogEntries = await getCollection('blog');
@@ -12,7 +13,6 @@ export async function getStaticPaths() {
 }
 
 const { entry } = Astro.props;
-import { render } from 'astro:content';
 const { Content, headings } = await render(entry);
 
 // Filtrer overskrifter (kun H2 og H3 giver mening i en indholdsfortegnelse)
@@ -33,118 +33,125 @@ const categorySlug = entry.data.category.toLowerCase()
 // Provide a custom title formatting for the layout
 const pageTitle = entry.data.seo?.title || entry.data.title;
 
-import relatedPostsData from '../../data/related-posts.json';
+const formattedDate = entry.data.publishDate.toLocaleDateString('da-DK', {
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric',
+});
 
 // Fetch related articles from our pre-computed TF-IDF JSON matrix
 const allPosts = await getCollection('blog');
-
-// Define an interface for the expected JSON structure
 const matrix: Record<string, string[]> = relatedPostsData;
-
 const relatedSlugs = matrix[entry.id] || [];
 const relatedPosts = allPosts.filter(post => relatedSlugs.includes(post.id));
-
-// Sort the posts to match the order in the array (highest similarity first)
 relatedPosts.sort((a, b) => relatedSlugs.indexOf(a.id) - relatedSlugs.indexOf(b.id));
 ---
 
 <Layout 
-  title={`${pageTitle} | Karmaveda`} 
+  title={pageTitle.includes('Karmaveda') ? pageTitle : `${pageTitle} | Karmaveda`} 
   description={entry.data.seo?.description || entry.data.description}
-  image={entry.data.image}
   author={entry.data.author}
   ogType="article"
   publishedTime={entry.data.publishDate}
   category={entry.data.category}
+  wordCount={wordCount}
 >
-  <!-- Hero Section -->
-  {entry.data.image ? (
-    <section class="relative w-full overflow-hidden pt-32 pb-24 md:pt-48 md:pb-32 flex flex-col justify-center min-h-[50vh] md:min-h-[60vh]">
-      <div class="absolute inset-0 z-0">
-        <Image 
-          src={entry.data.image} 
-          alt={entry.data.title} 
-          widths={[400, 800, 1200, 1600]}
-          sizes="100vw"
-          loading="eager"
-          fetchpriority="high"
-          class="w-full h-full object-cover object-center md:object-right" 
-        />
-        <div class="absolute inset-0 bg-kv-green-900/30 mix-blend-multiply"></div>
-        <div class="absolute inset-0 bg-gradient-to-t from-kv-green-900 via-kv-green-900/80 via-60% to-transparent md:hidden"></div>
-        <div class="absolute inset-0 hidden md:block bg-gradient-to-r from-kv-green-900 from-20% via-kv-green-900/90 via-50% to-transparent"></div>
-      </div>
-      
-      <div class="relative z-10 flex flex-col items-start px-4 sm:px-6 lg:px-8 mt-8 md:mt-12 w-full max-w-7xl mx-auto">
-        <div class="text-sm font-semibold text-white/90 uppercase tracking-widest mb-6 flex items-center flex-wrap gap-y-3">
-          <a href={`/kategori/${categorySlug}`} class="inline-block bg-white/20 backdrop-blur-md text-white px-4 py-1.5 rounded-full text-xs hover:bg-white/30 transition-colors mr-3 border border-white/10">
-            {entry.data.category}
-          </a>
-          <a href="/om-nina-riisager" class="hover:text-white transition-colors drop-shadow-sm">Skrevet af {entry.data.author}</a>
-          {readingTime > 0 && (
-            <>
-              <span class="mx-2 text-white/40">&bull;</span>
-              <span class="flex items-center drop-shadow-sm">
-                <svg class="w-4 h-4 mr-1.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-                {readingTime} min læsetid
-              </span>
-            </>
+  <article class="bg-white">
+    <!-- Article Header / Hero -->
+    {entry.data.image ? (
+      <header class="relative w-full overflow-hidden pt-32 pb-24 md:pt-48 md:pb-32 flex flex-col justify-center min-h-[50vh] md:min-h-[60vh]">
+        <div class="absolute inset-0 z-0">
+          <Image 
+            src={entry.data.image} 
+            alt={entry.data.title} 
+            widths={[400, 800, 1200, 1600]}
+            sizes="100vw"
+            loading="eager"
+            fetchpriority="high"
+            class="w-full h-full object-cover object-center md:object-right" 
+          />
+          <div class="absolute inset-0 bg-kv-green-900/30 mix-blend-multiply"></div>
+          <div class="absolute inset-0 bg-gradient-to-t from-kv-green-900 via-kv-green-900/80 via-60% to-transparent md:hidden"></div>
+          <div class="absolute inset-0 hidden md:block bg-gradient-to-r from-kv-green-900 from-20% via-kv-green-900/90 via-50% to-transparent"></div>
+        </div>
+        
+        <div class="relative z-10 flex flex-col items-start px-4 sm:px-6 lg:px-8 mt-8 md:mt-12 w-full max-w-7xl mx-auto">
+          <div class="text-sm font-semibold text-white/90 uppercase tracking-widest mb-6 flex items-center flex-wrap gap-y-3">
+            <a href={`/kategori/${categorySlug}/`} class="inline-block bg-white/20 backdrop-blur-md text-white px-4 py-1.5 rounded-full text-xs hover:bg-white/30 transition-colors mr-3 border border-white/10">
+              {entry.data.category}
+            </a>
+            <a href="/om-nina-riisager/" rel="author" class="hover:text-white transition-colors drop-shadow-sm">Skrevet af {entry.data.author}</a>
+            <span class="mx-2 text-white/40" aria-hidden="true">&bull;</span>
+            <time datetime={entry.data.publishDate.toISOString()} class="drop-shadow-sm">
+              {formattedDate}
+            </time>
+            {readingTime > 0 && (
+              <>
+                <span class="mx-2 text-white/40" aria-hidden="true">&bull;</span>
+                <span class="flex items-center drop-shadow-sm">
+                  <svg class="w-4 h-4 mr-1.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  {readingTime} min læsetid
+                </span>
+              </>
+            )}
+          </div>
+          <h1 class="text-3xl md:text-5xl lg:text-6xl font-serif text-white mb-6 leading-tight font-bold max-w-3xl drop-shadow-lg">
+            {entry.data.title}
+          </h1>
+          {entry.data.description && (
+            <p class="text-lg md:text-xl text-white/90 font-light leading-relaxed max-w-2xl drop-shadow-md">
+              {entry.data.description}
+            </p>
           )}
         </div>
-        <h1 class="text-3xl md:text-5xl lg:text-6xl font-serif text-white mb-6 leading-tight font-bold max-w-3xl drop-shadow-lg">
-          {entry.data.title}
-        </h1>
-        {entry.data.description && (
-          <p class="text-lg md:text-xl text-white/90 font-light leading-relaxed max-w-2xl drop-shadow-md">
-            {entry.data.description}
-          </p>
-        )}
-      </div>
-    </section>
-  ) : (
-    <PageHero theme="green" isCompact={true}>
-      <div class="flex flex-col items-center">
-        <div class="text-sm font-semibold text-kv-earth-600 uppercase tracking-widest mb-4 flex items-center justify-center flex-wrap gap-y-2">
-          <a href={`/kategori/${categorySlug}`} class="inline-block bg-kv-earth-500/10 text-kv-earth-600 px-3 py-1 rounded-full text-xs hover:bg-kv-earth-500/20 transition-colors mr-3">
-            {entry.data.category}
-          </a>
-          <a href="/om-nina-riisager" class="text-kv-green-700 hover:text-kv-earth-600 transition-colors">Skrevet af {entry.data.author}</a>
-          {readingTime > 0 && (
-            <>
-              <span class="mx-2 text-kv-green-700/40">&bull;</span>
-              <span class="text-kv-green-700 flex items-center">
-                <svg class="w-4 h-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-                {readingTime} min læsetid
-              </span>
-            </>
+      </header>
+    ) : (
+      <PageHero as="header" theme="green" isCompact={true}>
+        <div class="flex flex-col items-center">
+          <div class="text-sm font-semibold text-kv-earth-600 uppercase tracking-widest mb-4 flex items-center justify-center flex-wrap gap-y-2">
+            <a href={`/kategori/${categorySlug}/`} class="inline-block bg-kv-earth-500/10 text-kv-earth-600 px-3 py-1 rounded-full text-xs hover:bg-kv-earth-500/20 transition-colors mr-3">
+              {entry.data.category}
+            </a>
+            <a href="/om-nina-riisager/" rel="author" class="text-kv-green-700 hover:text-kv-earth-600 transition-colors">Skrevet af {entry.data.author}</a>
+            <span class="mx-2 text-kv-green-700/40" aria-hidden="true">&bull;</span>
+            <time datetime={entry.data.publishDate.toISOString()} class="text-kv-green-700">
+              {formattedDate}
+            </time>
+            {readingTime > 0 && (
+              <>
+                <span class="mx-2 text-kv-green-700/40" aria-hidden="true">&bull;</span>
+                <span class="text-kv-green-700 flex items-center">
+                  <svg class="w-4 h-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  {readingTime} min læsetid
+                </span>
+              </>
+            )}
+          </div>
+          <h1 class="text-3xl md:text-4xl lg:text-5xl font-serif text-kv-green-900 mb-6 leading-tight font-bold max-w-4xl mx-auto">
+            {entry.data.title}
+          </h1>
+          {entry.data.description && (
+            <p class="text-lg md:text-xl text-kv-green-800/80 font-light leading-relaxed max-w-3xl mx-auto">
+              {entry.data.description}
+            </p>
           )}
         </div>
-        <h1 class="text-3xl md:text-4xl lg:text-5xl font-serif text-kv-green-900 mb-6 leading-tight font-bold max-w-4xl mx-auto">
-          {entry.data.title}
-        </h1>
-        {entry.data.description && (
-          <p class="text-lg md:text-xl text-kv-green-800/80 font-light leading-relaxed max-w-3xl mx-auto">
-            {entry.data.description}
-          </p>
-        )}
-      </div>
-    </PageHero>
-  )}
+      </PageHero>
+    )}
 
-  <!-- Article Body -->
-  <article class="bg-white pt-12 pb-24">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col lg:flex-row lg:justify-center lg:items-start lg:gap-12">
+    <!-- Article Body + TOC -->
+    <div class="pt-12 pb-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col lg:flex-row lg:justify-center lg:items-start lg:gap-12">
       
       {/* Desktop Sidebar (TOC) */}
       {toc.length > 0 && (
-        <aside class="hidden lg:block w-72 flex-shrink-0 lg:sticky lg:top-32">
-          <div class="bg-kv-earth-50/50 border border-kv-earth-200 rounded-3xl p-6 shadow-sm">
+        <aside aria-label="Indholdsfortegnelse" class="hidden lg:block w-72 flex-shrink-0 lg:sticky lg:top-32">
+          <nav aria-label="Indholdsfortegnelse" class="bg-kv-earth-50/50 border border-kv-earth-200 rounded-3xl p-6 shadow-sm">
             <h2 class="text-lg font-serif text-kv-green-900 mb-4 flex items-center border-b border-kv-earth-200/60 pb-3">
-              <svg class="w-5 h-5 mr-2 text-kv-earth-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg class="w-5 h-5 mr-2 text-kv-earth-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7" />
               </svg>
               Indholdsfortegnelse
@@ -156,65 +163,66 @@ relatedPosts.sort((a, b) => relatedSlugs.indexOf(a.id) - relatedSlugs.indexOf(b.
                 </li>
               ))}
             </ul>
-          </div>
+          </nav>
         </aside>
       )}
 
-      <!-- Main Content Area -->
+      <!-- Main Article Content Area -->
       <div class="flex-1 w-full max-w-3xl mx-auto lg:mx-0">
         
         {/* Indholdsfortegnelse (TOC) - Mobile Only */}
         {toc.length > 0 && (
           <details class="lg:hidden mb-10 bg-kv-earth-50 border border-kv-earth-200 rounded-2xl p-5 shadow-sm group">
             <summary class="text-lg font-serif text-kv-green-900 flex items-center justify-between cursor-pointer list-none [&::-webkit-details-marker]:hidden">
-              <div class="flex items-center">
-                <svg class="w-5 h-5 mr-2 text-kv-earth-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <span class="flex items-center">
+                <svg class="w-5 h-5 mr-2 text-kv-earth-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7" />
                 </svg>
                 Indholdsfortegnelse:
-              </div>
-              <svg class="w-5 h-5 text-kv-earth-500 transition-transform group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              </span>
+              <svg class="w-5 h-5 text-kv-earth-500 transition-transform group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
               </svg>
             </summary>
-            <ul id="toc-mobile-list" class="space-y-1 mt-4 pt-4 border-t border-kv-earth-200/60">
-              {toc.map(heading => (
-                <li class={`toc-item transition-all duration-300 border-l-2 border-transparent pl-3 py-1.5 rounded-r-lg ${heading.depth === 3 ? 'ml-6 text-sm' : 'text-base font-medium'} text-kv-green-700 hover:text-kv-green-500`}>
-                  <a href={`#${heading.slug}`} class="block leading-snug">{heading.text}</a>
-                </li>
-              ))}
-            </ul>
+            <nav aria-label="Indholdsfortegnelse (mobil)">
+              <ul id="toc-mobile-list" class="space-y-1 mt-4 pt-4 border-t border-kv-earth-200/60">
+                {toc.map(heading => (
+                  <li class={`toc-item transition-all duration-300 border-l-2 border-transparent pl-3 py-1.5 rounded-r-lg ${heading.depth === 3 ? 'ml-6 text-sm' : 'text-base font-medium'} text-kv-green-700 hover:text-kv-green-500`}>
+                    <a href={`#${heading.slug}`} class="block leading-snug">{heading.text}</a>
+                  </li>
+                ))}
+              </ul>
+            </nav>
           </details>
         )}
 
-        <!-- Article Content -->
+        <!-- Article Prose -->
         <div class="prose prose-lg prose-kv max-w-none prose-headings:font-serif prose-headings:text-kv-green-900 prose-headings:scroll-mt-28 prose-a:text-kv-green-600 hover:prose-a:text-kv-green-500 prose-img:rounded-2xl">
           <Content />
         </div>
 
         <!-- Article Footer -->
         <footer class="mt-16 pt-8 border-t border-kv-earth-200">
-          
           {relatedPosts.length > 0 && (
-            <div class="mb-12">
-              <h3 class="text-2xl font-serif text-kv-green-900 mb-6">Læs også:</h3>
+            <section aria-labelledby="related-posts-heading" class="mb-12">
+              <h2 id="related-posts-heading" class="text-2xl font-serif text-kv-green-900 mb-6">Læs også:</h2>
               <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
                 {relatedPosts.map(post => (
-                  <a href={`/blog/${post.id}`} class="group block border border-kv-earth-200 bg-kv-earth-50 rounded-2xl overflow-hidden hover:shadow-md transition-all h-full">
+                  <a href={`/blog/${post.id}/`} class="group block border border-kv-earth-200 bg-kv-earth-50 rounded-2xl overflow-hidden hover:shadow-md transition-all h-full">
                     <div class="p-6 h-full flex flex-col">
-                      <h4 class="text-lg font-serif text-kv-green-900 group-hover:text-kv-green-600 transition-colors line-clamp-3">
+                      <h3 class="text-lg font-serif text-kv-green-900 group-hover:text-kv-green-600 transition-colors line-clamp-3">
                         {post.data.title}
-                      </h4>
+                      </h3>
                     </div>
                   </a>
                 ))}
               </div>
-            </div>
+            </section>
           )}
 
           <div class="flex items-center">
-            <a href="/blog" class="inline-flex items-center text-kv-green-700 font-medium hover:text-kv-green-500 transition-colors">
-              <svg class="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <a href="/blog/" class="inline-flex items-center text-kv-green-700 font-medium hover:text-kv-green-500 transition-colors">
+              <svg class="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16l-4-4m0 0l4-4m-4 4h18" />
               </svg>
               Tilbage til alle artikler
@@ -228,7 +236,7 @@ relatedPosts.sort((a, b) => relatedSlugs.indexOf(a.id) - relatedSlugs.indexOf(b.
   <script>
     document.addEventListener('astro:page-load', () => {
       const observer = new IntersectionObserver((entries) => {
-        let activeId = null;
+        let activeId: string | null = null;
         
         entries.forEach(entry => {
           if (entry.isIntersecting) {
@@ -237,13 +245,13 @@ relatedPosts.sort((a, b) => relatedSlugs.indexOf(a.id) - relatedSlugs.indexOf(b.
         });
 
         if (activeId) {
-          const updateToc = (listId) => {
+          const updateToc = (listId: string) => {
             const list = document.getElementById(listId);
             if (!list) return;
             
             list.querySelectorAll('.toc-item').forEach(li => {
               const link = li.querySelector('a');
-              if (link.getAttribute('href') === `#${activeId}`) {
+              if (link && link.getAttribute('href') === `#${activeId}`) {
                 li.classList.add('border-kv-green-500', 'bg-kv-green-500/10', 'text-kv-green-900', 'font-bold');
                 li.classList.remove('border-transparent', 'text-kv-green-700', 'hover:text-kv-green-500');
               } else {

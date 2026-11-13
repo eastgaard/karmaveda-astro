@@ -5,11 +5,35 @@ import PageHero from '../components/PageHero.astro';
 import imgMeditation1 from '../assets/IMG_20170621_062437-f63bf4d9.png';
 import imgMeditation2 from '../assets/11.jpg';
 import imgMeditation3 from '../assets/IMG_20180716_130756.jpg';
+
+const faqItems = [
+  {
+    question: 'Hvad betyder Karmaveda?',
+    answer:
+      'Karma stammer fra sanskrit og betyder at handle – loven om årsag og virkning. Veda betyder viden eller visdom. Med Ayurveda, yoga, meditation og mindfulness får du en dybere indsigt og viden om, hvad der er bedst for dig, så du kan handle derefter.',
+  },
+  {
+    question: 'Hvor længe skal jeg meditere ad gangen?',
+    answer:
+      'Til at starte med anbefaler jeg, at du blot mediterer 4-5 minutter ad gangen. Du kan altid skrue op, når det passer bedre ind i din hverdag. Det afgørende er, at du er konsistent.',
+  },
+  {
+    question: 'Hvornår ser jeg resultater?',
+    answer:
+      'Nogle mærker effekt efter blot få dage, mens studier ofte kigger på effekten efter 8 uger. Det vigtigste er at meditere hver dag, uanset om det kun er et par minutter.',
+  },
+  {
+    question: 'Hvad sker der, hvis jeg misser en dag?',
+    answer:
+      "Sig pyt! Jeg er ikke fanatisk. Men prøv, om du kan komme op på hesten igen allerede dagen efter. Don't miss twice.",
+  },
+];
 ---
 
 <Layout 
-  title="Meditation | Karmaveda" 
+  title="Mindfulness & Guidet Meditation | Karmaveda" 
   description="Meditation er et vigtigt værktøj til at skabe balance i livet. Lyt til gratis guidede meditationer og få ro, nærvær og glæde i hverdagen."
+  faq={faqItems}
 >
   <!-- Hero Section -->
   <PageHero>
@@ -19,20 +43,18 @@ import imgMeditation3 from '../assets/IMG_20180716_130756.jpg';
     <p class="text-xl md:text-2xl text-[#606c38]/80 font-light leading-relaxed max-w-3xl mx-auto mb-10">
       Et vigtigt værktøj til at skabe balance i livet
     </p>
-    
-
   </PageHero>
 
   <!-- Podcast Links Section -->
-  <section class="py-16 bg-white border-b border-kv-earth-100 text-center">
+  <section aria-labelledby="podcast-heading" class="py-16 bg-white border-b border-kv-earth-100 text-center">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl md:text-3xl font-serif text-kv-green-900 mb-8">Lyt gratis til Karmaveda på din yndlings app:</h2>
-      <div class="flex flex-wrap justify-center gap-4">
+      <h2 id="podcast-heading" class="text-2xl md:text-3xl font-serif text-kv-green-900 mb-8">Lyt gratis til Karmaveda på din yndlings app:</h2>
+      <nav aria-label="Meditations- og podcast-apps" class="flex flex-wrap justify-center gap-4">
         <a href="https://open.spotify.com/show/0yu5c87AO9NpwojUYgPYQu" target="_blank" rel="noopener noreferrer" class="px-8 py-3.5 bg-kv-earth-50 rounded-full text-kv-green-900 font-medium hover:bg-kv-green-100 hover:text-kv-green-800 transition-colors shadow-sm border border-kv-earth-200">Spotify</a>
         <a href="https://www.youtube.com/channel/UCvlMZBLi94LgFxLFb-ume4A" target="_blank" rel="noopener noreferrer" class="px-8 py-3.5 bg-kv-earth-50 rounded-full text-kv-green-900 font-medium hover:bg-kv-green-100 hover:text-kv-green-800 transition-colors shadow-sm border border-kv-earth-200">YouTube</a>
         <a href="https://insighttimer.com/karmaveda" target="_blank" rel="noopener noreferrer" class="px-8 py-3.5 bg-kv-earth-50 rounded-full text-kv-green-900 font-medium hover:bg-kv-green-100 hover:text-kv-green-800 transition-colors shadow-sm border border-kv-earth-200">InsightTimer</a>
         <a href="https://podcasts.apple.com/us/podcast/karmaveda/id1504017633?uo=4" target="_blank" rel="noopener noreferrer" class="px-8 py-3.5 bg-kv-earth-50 rounded-full text-kv-green-900 font-medium hover:bg-kv-green-100 hover:text-kv-green-800 transition-colors shadow-sm border border-kv-earth-200">iTunes</a>
-      </div>
+      </nav>
     </div>
   </section>
 
@@ -74,13 +96,13 @@ import imgMeditation3 from '../assets/IMG_20180716_130756.jpg';
     </p>
     <div class="mt-6 space-y-6">
       <div>
-        <h4 class="font-serif text-xl text-kv-green-900 mb-2">Øget mental velvære og livsglæde</h4>
+        <h3 class="font-serif text-xl text-kv-green-900 mb-2">Øget mental velvære og livsglæde</h3>
         <p class="text-sm">
           Adskillige videnskabelige studier dokumenterer, at meditation reducerer symptomer på depression, stress og angst. Det øger din livsglæde og giver større indre ro og styrke.
         </p>
       </div>
       <div>
-        <h4 class="font-serif text-xl text-kv-green-900 mb-2">+ Bedre helbred</h4>
+        <h3 class="font-serif text-xl text-kv-green-900 mb-2">+ Bedre helbred</h3>
         <p class="text-sm">
           Forskning viser bl.a. at meditation mindsker risikoen for hjertesygdomme, forhøjet blodtryk og sænker inflammation på celleniveau.
         </p>
@@ -109,26 +131,30 @@ import imgMeditation3 from '../assets/IMG_20180716_130756.jpg';
   </TextWithImage>
 
   <!-- Citat -->
-  <section class="py-24 bg-kv-green-900 text-center px-4">
-    <p class="text-3xl md:text-5xl font-serif text-kv-earth-100 italic leading-relaxed max-w-4xl mx-auto">
-      "Fred kommer indefra.<br>Søg det ikke udenfor"
-    </p>
-    <p class="text-kv-green-300 mt-6 text-xl tracking-widest uppercase">— Buddha</p>
+  <section aria-label="Citat om indre fred" class="py-24 bg-kv-green-900 text-center px-4">
+    <figure class="max-w-4xl mx-auto">
+      <blockquote class="text-3xl md:text-5xl font-serif text-kv-earth-100 italic leading-relaxed">
+        "Fred kommer indefra.<br />Søg det ikke udenfor"
+      </blockquote>
+      <figcaption class="text-kv-green-300 mt-6 text-xl tracking-widest uppercase">
+        — <cite class="not-italic">Buddha</cite>
+      </figcaption>
+    </figure>
   </section>
 
   <!-- FAQ -->
-  <section class="py-24 bg-kv-earth-50">
+  <section aria-labelledby="faq-heading" class="py-24 bg-kv-earth-50">
     <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-16">
-        <h2 class="text-3xl md:text-4xl font-serif text-kv-green-900 mb-4">Ofte stillede spørgsmål</h2>
-        <p class="text-kv-text/70">Du er altid velkommen til at kontakte mig direkte på nina@karmaveda.dk</p>
+        <h2 id="faq-heading" class="text-3xl md:text-4xl font-serif text-kv-green-900 mb-4">Ofte stillede spørgsmål</h2>
+        <p class="text-kv-text/70">Du er altid velkommen til at kontakte mig direkte på <a href="mailto:nina@karmaveda.dk" class="underline hover:text-kv-green-800">nina@karmaveda.dk</a></p>
       </div>
       
       <div class="space-y-4">
         <details class="group bg-white rounded-2xl p-6 cursor-pointer hover:shadow-md transition-all border border-kv-earth-200">
           <summary class="flex justify-between items-center font-serif text-xl text-kv-green-900 font-medium">
-            Hvad betyder Karmaveda?
-            <span class="ml-4 flex-shrink-0 text-kv-green-500 group-open:rotate-180 transition-transform">
+            <span>Hvad betyder Karmaveda?</span>
+            <span class="ml-4 flex-shrink-0 text-kv-green-500 group-open:rotate-180 transition-transform" aria-hidden="true">
               <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
             </span>
           </summary>
@@ -140,8 +166,8 @@ import imgMeditation3 from '../assets/IMG_20180716_130756.jpg';
 
         <details class="group bg-white rounded-2xl p-6 cursor-pointer hover:shadow-md transition-all border border-kv-earth-200">
           <summary class="flex justify-between items-center font-serif text-xl text-kv-green-900 font-medium">
-            Hvor længe skal jeg meditere ad gangen?
-            <span class="ml-4 flex-shrink-0 text-kv-green-500 group-open:rotate-180 transition-transform">
+            <span>Hvor længe skal jeg meditere ad gangen?</span>
+            <span class="ml-4 flex-shrink-0 text-kv-green-500 group-open:rotate-180 transition-transform" aria-hidden="true">
               <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
             </span>
           </summary>
@@ -152,8 +178,8 @@ import imgMeditation3 from '../assets/IMG_20180716_130756.jpg';
 
         <details class="group bg-white rounded-2xl p-6 cursor-pointer hover:shadow-md transition-all border border-kv-earth-200">
           <summary class="flex justify-between items-center font-serif text-xl text-kv-green-900 font-medium">
-            Hvornår ser jeg resultater?
-            <span class="ml-4 flex-shrink-0 text-kv-green-500 group-open:rotate-180 transition-transform">
+            <span>Hvornår ser jeg resultater?</span>
+            <span class="ml-4 flex-shrink-0 text-kv-green-500 group-open:rotate-180 transition-transform" aria-hidden="true">
               <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
             </span>
           </summary>
@@ -164,8 +190,8 @@ import imgMeditation3 from '../assets/IMG_20180716_130756.jpg';
 
         <details class="group bg-white rounded-2xl p-6 cursor-pointer hover:shadow-md transition-all border border-kv-earth-200">
           <summary class="flex justify-between items-center font-serif text-xl text-kv-green-900 font-medium">
-            Hvad sker der, hvis jeg misser en dag?
-            <span class="ml-4 flex-shrink-0 text-kv-green-500 group-open:rotate-180 transition-transform">
+            <span>Hvad sker der, hvis jeg misser en dag?</span>
+            <span class="ml-4 flex-shrink-0 text-kv-green-500 group-open:rotate-180 transition-transform" aria-hidden="true">
               <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
             </span>
           </summary>
@@ -177,10 +203,10 @@ import imgMeditation3 from '../assets/IMG_20180716_130756.jpg';
     </div>
   </section>
 
-  <!-- Newsletter CTA -->
-  <section class="py-24 bg-white relative overflow-hidden">
+  <!-- CTA -->
+  <section aria-labelledby="meditation-cta-heading" class="py-24 bg-white relative overflow-hidden">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <h2 class="text-3xl md:text-5xl font-serif text-kv-green-900 mb-6">+30 gode grunde til at meditere</h2>
+      <h2 id="meditation-cta-heading" class="text-3xl md:text-5xl font-serif text-kv-green-900 mb-6">+30 gode grunde til at meditere</h2>
       <p class="text-xl text-kv-text/80 mb-10 leading-relaxed font-light">
         Vil du have endnu mere dokumentation? Få tilsendt en gratis artikel, der baserer sig på over 3000 videnskabelige studier, som viser dig de utrolige fordele ved meditation.
       </p>

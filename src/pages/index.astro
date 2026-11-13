@@ -6,8 +6,10 @@ import imgIndex1 from '../assets/63 (1).jpg';
 import imgIndex2 from '../assets/31.jpg';
 ---
 
-<Layout title="Karmaveda | Din Lokale Ayurvediske Velværeklinik" description="Oplev ægte velvære hos Karmaveda med Ayurvediske livsstilskonsultationer, balancerende energibehandling og meditation. Find din indre balance og ro.">
-  
+<Layout
+  title="Karmaveda | Din Lokale Ayurvediske Velværeklinik"
+  description="Oplev ægte velvære hos Karmaveda med Ayurvediske livsstilskonsultationer, balancerende energibehandling og meditation. Find din indre balance og ro."
+>
   <!-- Hero Section -->
   <PageHero isLarge={true}>
     <span class="text-sm font-semibold text-kv-green-600 uppercase tracking-widest mb-6 block">Velkommen til Karmaveda</span>
@@ -28,11 +30,11 @@ import imgIndex2 from '../assets/31.jpg';
   </PageHero>
 
   <!-- Featured Services -->
-  <section id="ydelser" class="py-24 bg-white scroll-mt-10">
+  <section id="ydelser" aria-labelledby="ydelser-heading" class="py-24 bg-white scroll-mt-10">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-20">
         <span class="text-sm font-semibold text-kv-earth-600 uppercase tracking-widest mb-3 block">Holistisk Velvære</span>
-        <h2 class="text-4xl font-serif text-kv-green-900 mb-6">Mine Ydelser</h2>
+        <h2 id="ydelser-heading" class="text-4xl font-serif text-kv-green-900 mb-6">Mine Ydelser</h2>
         <p class="text-lg text-kv-text/70 max-w-2xl mx-auto font-light">
           Skræddersyede forløb og behandlinger, der understøtter din krops naturlige evne til at helbrede sig selv og genfinde balancen.
         </p>
@@ -40,9 +42,9 @@ import imgIndex2 from '../assets/31.jpg';
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
         <!-- Service 1: Livsstilskonsultation -->
-        <div class="bg-kv-earth-50 rounded-3xl p-10 hover:shadow-xl transition-all duration-300 group border border-kv-earth-200 hover:border-kv-green-300 flex flex-col h-full transform hover:-translate-y-1">
+        <article class="bg-kv-earth-50 rounded-3xl p-10 hover:shadow-xl transition-all duration-300 group border border-kv-earth-200 hover:border-kv-green-300 flex flex-col h-full transform hover:-translate-y-1">
           <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center mb-8 border border-kv-earth-200 group-hover:bg-kv-green-500 group-hover:border-kv-green-500 transition-colors duration-300 shadow-sm">
-            <svg class="w-8 h-8 text-kv-green-700 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg class="w-8 h-8 text-kv-green-700 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
             </svg>
           </div>
@@ -50,18 +52,18 @@ import imgIndex2 from '../assets/31.jpg';
           <p class="text-base text-kv-text/80 leading-relaxed mb-8 font-light flex-grow">
             Få et skræddersyet forløb baseret på din unikke konstitution. Jeg arbejder med fordøjelse, søvn, stress og skaber varig balance gennem små, men betydningsfulde ændringer i hverdagen.
           </p>
-          <a href="/livsstilskonsultation" class="inline-flex items-center text-kv-green-700 font-medium hover:text-kv-green-900 transition-colors bg-white px-6 py-3 rounded-full border border-kv-green-200 group-hover:border-kv-green-400 self-start">
-            Læs mere 
-            <svg class="ml-2 w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <a href="/livsstilskonsultation/" class="inline-flex items-center text-kv-green-700 font-medium hover:text-kv-green-900 transition-colors bg-white px-6 py-3 rounded-full border border-kv-green-200 group-hover:border-kv-green-400 self-start">
+            Læs mere<span class="sr-only"> om Ayurvedisk Livsstilskonsultation</span>
+            <svg class="ml-2 w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
           </a>
-        </div>
+        </article>
 
         <!-- Service 2: Energibehandling -->
-        <div class="bg-kv-earth-50 rounded-3xl p-10 hover:shadow-xl transition-all duration-300 group border border-kv-earth-200 hover:border-kv-green-300 flex flex-col h-full transform hover:-translate-y-1">
+        <article class="bg-kv-earth-50 rounded-3xl p-10 hover:shadow-xl transition-all duration-300 group border border-kv-earth-200 hover:border-kv-green-300 flex flex-col h-full transform hover:-translate-y-1">
           <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center mb-8 border border-kv-earth-200 group-hover:bg-kv-green-500 group-hover:border-kv-green-500 transition-colors duration-300 shadow-sm">
-            <svg class="w-8 h-8 text-kv-green-700 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg class="w-8 h-8 text-kv-green-700 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
           </div>
@@ -69,18 +71,18 @@ import imgIndex2 from '../assets/31.jpg';
           <p class="text-base text-kv-text/80 leading-relaxed mb-8 font-light flex-grow">
             Slap fuldstændig af mens energibanerne i din krop stimuleres via blide tryk, akupressur og healing. Behandlingen hjælper dig til at give slip på stress og stagneret energi.
           </p>
-          <a href="/behandlinger" class="inline-flex items-center text-kv-green-700 font-medium hover:text-kv-green-900 transition-colors bg-white px-6 py-3 rounded-full border border-kv-green-200 group-hover:border-kv-green-400 self-start">
-            Læs mere 
-            <svg class="ml-2 w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <a href="/behandlinger/" class="inline-flex items-center text-kv-green-700 font-medium hover:text-kv-green-900 transition-colors bg-white px-6 py-3 rounded-full border border-kv-green-200 group-hover:border-kv-green-400 self-start">
+            Læs mere<span class="sr-only"> om Balancerende Energibehandling</span>
+            <svg class="ml-2 w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
           </a>
-        </div>
+        </article>
 
         <!-- Service 3: Meditation -->
-        <div class="bg-kv-earth-50 rounded-3xl p-10 hover:shadow-xl transition-all duration-300 group border border-kv-earth-200 hover:border-kv-green-300 flex flex-col h-full transform hover:-translate-y-1">
+        <article class="bg-kv-earth-50 rounded-3xl p-10 hover:shadow-xl transition-all duration-300 group border border-kv-earth-200 hover:border-kv-green-300 flex flex-col h-full transform hover:-translate-y-1">
           <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center mb-8 border border-kv-earth-200 group-hover:bg-kv-green-500 group-hover:border-kv-green-500 transition-colors duration-300 shadow-sm">
-            <svg class="w-8 h-8 text-kv-green-700 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg class="w-8 h-8 text-kv-green-700 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
             </svg>
           </div>
@@ -88,13 +90,13 @@ import imgIndex2 from '../assets/31.jpg';
           <p class="text-base text-kv-text/80 leading-relaxed mb-8 font-light flex-grow">
             Få et liv med ro, nærvær og glæde. Deltag i 1-1 sessioner, opdag mine gratis guidede meditationer, eller få indtalt personlige meditationer skræddersyet til dine behov.
           </p>
-          <a href="/meditation" class="inline-flex items-center text-kv-green-700 font-medium hover:text-kv-green-900 transition-colors bg-white px-6 py-3 rounded-full border border-kv-green-200 group-hover:border-kv-green-400 self-start">
-            Læs mere 
-            <svg class="ml-2 w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <a href="/meditation/" class="inline-flex items-center text-kv-green-700 font-medium hover:text-kv-green-900 transition-colors bg-white px-6 py-3 rounded-full border border-kv-green-200 group-hover:border-kv-green-400 self-start">
+            Læs mere<span class="sr-only"> om Mindfulness og Meditation</span>
+            <svg class="ml-2 w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
           </a>
-        </div>
+        </article>
       </div>
     </div>
   </section>
@@ -102,13 +104,13 @@ import imgIndex2 from '../assets/31.jpg';
   <!-- Mød Nina -->
   <TextWithImage 
     imageSrc={imgIndex1} 
-    imageAlt="Nina Riisager" 
+    imageAlt="Nina Riisager, stifter af Karmaveda" 
     imagePosition="left"
     title="Mød Nina Riisager"
     subtitle="Din Behandler"
     bgColor="earth-50"
     buttonText="Læs mere om Nina"
-    buttonHref="/om-nina-riisager"
+    buttonHref="/om-nina-riisager/"
   >
     <p>
       Jeg hedder Nina Riisager, og har stiftet Karmaveda for at give inspiration og viden om, hvordan du kan leve et liv i balance.
@@ -124,13 +126,13 @@ import imgIndex2 from '../assets/31.jpg';
   <!-- Karmaveda Filosofien -->
   <TextWithImage 
     imageSrc={imgIndex2} 
-    imageAlt="Karmaveda Klinikken" 
+    imageAlt="Karmaveda Klinikken i Stenløse" 
     imagePosition="right"
     title="Karmaveda Filosofien"
     subtitle="Årsag & Virkning"
     bgColor="white"
     buttonText="Læs mere om klinikken"
-    buttonHref="/om-os"
+    buttonHref="/om-os/"
   >
     <p>
       <strong>Karma</strong> stammer fra sanskrit og betyder at gøre, udføre eller handle. Det er loven om årsag og virkning – alle de handlinger vi gør i hverdagen, påvirker vores helbred og velvære.
@@ -143,10 +145,10 @@ import imgIndex2 from '../assets/31.jpg';
     </p>
   </TextWithImage>
 
-  <!-- Newsletter / Bund CTA -->
-  <section class="py-24 bg-kv-green-900 text-center px-4">
+  <!-- Bund CTA -->
+  <section aria-labelledby="cta-heading" class="py-24 bg-kv-green-900 text-center px-4">
     <div class="max-w-3xl mx-auto">
-      <h2 class="text-3xl md:text-5xl font-serif text-white mb-6">Er du klar til forandring?</h2>
+      <h2 id="cta-heading" class="text-3xl md:text-5xl font-serif text-white mb-6">Er du klar til forandring?</h2>
       <p class="text-xl text-kv-earth-100 mb-10 leading-relaxed font-light">
         Det starter med et enkelt skridt. Tag kontakt i dag for at høre mere om, hvordan jeg kan hjælpe dig med at finde balancen igen.
       </p>

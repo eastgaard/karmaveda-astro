@@ -4,35 +4,132 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import Seo from '@jdevalk/astro-seo-graph/Seo.astro';
 import { ClientRouter } from 'astro:transitions';
+import { buildPageSchemaGraph, SITE_URL, type PageGraphOptions } from '../lib/seo-graph';
 
 interface Props {
   title: string;
   description?: string;
   image?: string | { src: string; width: number; height: number };
   author?: string;
-  ogType?: 'website' | 'article';
+  ogType?: 'website' | 'article' | 'profile';
+  pageType?: 'WebPage' | 'ProfilePage' | 'CollectionPage';
   publishedTime?: Date;
+  modifiedTime?: Date;
   category?: string;
+  wordCount?: number;
+  noindex?: boolean;
+  breadcrumbs?: Array<{ name: string; url: string }>;
+  faq?: PageGraphOptions['faq'];
+  services?: PageGraphOptions['services'];
+  hasMarkdownAlternate?: boolean;
 }
 
 const { 
   title, 
   description = "Karmaveda - Din vej til naturlig sundhed",
-  image = "/images/hero-bg.png",
+  image,
   author,
   ogType = "website",
+  pageType = "WebPage",
   publishedTime,
-  category
+  modifiedTime,
+  category,
+  wordCount,
+  noindex = false,
+  breadcrumbs,
+  faq,
+  services,
+  hasMarkdownAlternate,
 } = Astro.props;
 
-const siteUrl = "https://www.karmaveda.dk";
-const currentUrl = new URL(Astro.url.pathname, siteUrl).toString();
+const siteUrl = SITE_URL;
+const rawPathname = Astro.url.pathname;
+const noSlashPath = rawPathname === '/' ? '/' : rawPathname.replace(/\/$/, '');
+const canonicalPath = noSlashPath === '/' ? '/' : `${noSlashPath}/`;
+const currentUrl = new URL(canonicalPath, siteUrl).toString();
 
-// Sørg for at billedet er en absolut URL
-const imageUrl = typeof image === 'string' ? image : image.src;
-const imageWidth = typeof image === 'object' ? image.width : undefined;
-const imageHeight = typeof image === 'object' ? image.height : undefined;
+// Programmatisk Open Graph-billede (1200x630) pr. side, medmindre andet er angivet eksplicit
+const defaultOgPath =
+  noindex || noSlashPath === '/'
+    ? '/og/index.jpg'
+    : /^\/blog\/\d+$/.test(noSlashPath)
+      ? '/og/blog.jpg'
+      : `/og${noSlashPath}.jpg`;
+
+const resolvedImage = image ?? { src: defaultOgPath, width: 1200, height: 630 };
+const imageUrl = typeof resolvedImage === 'string' ? resolvedImage : resolvedImage.src;
+const imageWidth = typeof resolvedImage === 'object' ? resolvedImage.width : undefined;
+const imageHeight = typeof resolvedImage === 'object' ? resolvedImage.height : undefined;
 const absoluteImageUrl = imageUrl.startsWith('http') ? imageUrl : new URL(imageUrl, siteUrl).toString();
+
+// Automatisk brødkrumme-struktur til JSON-LD Schema
+const cleanTitle = title.replace(/\s*\|\s*Karmaveda.*$/i, '').trim();
+const resolvedBreadcrumbs = breadcrumbs ?? (() => {
+  if (noSlashPath === '/' || noindex) return undefined;
+  const items: Array<{ name: string; url: string }> = [
+    { name: 'Forside', url: `${siteUrl}/` }
+  ];
+  if (noSlashPath.startsWith('/blog/') && noSlashPath !== '/blog') {
+    items.push({ name: 'Blog', url: `${siteUrl}/blog/` });
+  } else if (noSlashPath.startsWith('/kategori/')) {
+    items.push({ name: 'Blog', url: `${siteUrl}/blog/` });
+  }
+  items.push({ name: cleanTitle, url: currentUrl });
+  return items;
+})();
+
+// Beregn om der findes en maskinlæsbar Markdown-udgave (.md) af siden til LLM-crawlere
+const staticMdPages = new Set([
+  '/',
+  '/behandlinger',
+  '/livsstilskonsultation',
+  '/meditation',
+  '/skraeddersyede-meditationer',
+  '/om-os',
+  '/om-nina-riisager',
+  '/blog',
+]);
+const isBlogArticlePath =
+  noSlashPath.startsWith('/blog/') && !/^\/blog\/\d+$/.test(noSlashPath);
+const isCategoryPath = noSlashPath.startsWith('/kategori/');
+const shouldEmitMd =
+  !noindex &&
+  (hasMarkdownAlternate ?? (staticMdPages.has(noSlashPath) || isBlogArticlePath || isCategoryPath));
+
+const markdownHref = shouldEmitMd
+  ? noSlashPath === '/'
+    ? `${siteUrl}/index.md`
+    : `${siteUrl}${noSlashPath}.md`
+  : undefined;
+
+const extraLinks = markdownHref
+  ? [{ rel: 'alternate', type: 'text/markdown', href: markdownHref }]
+  : [];
+
+const graph = buildPageSchemaGraph({
+  url: currentUrl,
+  title: cleanTitle,
+  description,
+  pageType,
+  imageUrl: absoluteImageUrl,
+  imageWidth,
+  imageHeight,
+  breadcrumbs: resolvedBreadcrumbs,
+  article:
+    ogType === 'article'
+      ? {
+          headline: cleanTitle,
+          description,
+          datePublished: publishedTime,
+          dateModified: modifiedTime,
+          category,
+          wordCount,
+        }
+      : undefined,
+  faq,
+  services,
+  noindex,
+});
 ---
 
 <!doctype html>
@@ -47,30 +144,42 @@ const absoluteImageUrl = imageUrl.startsWith('http') ? imageUrl : new URL(imageU
     <link rel="alternate" type="application/rss+xml" title="Karmaveda RSS Feed" href={new URL("feed.xml", siteUrl).toString()} />
     
     <Seo
-      url={currentUrl}
+      canonical={currentUrl}
       title={title}
       description={description}
       siteName="Karmaveda"
-      inLanguage="da-DK"
       locale="da_DK"
       ogImage={absoluteImageUrl}
       ogImageWidth={imageWidth}
       ogImageHeight={imageHeight}
-      ogImageAlt={title}
+      ogImageAlt={cleanTitle}
       ogType={ogType}
       author={author}
-      twitter={author ? { creator: "@karmaveda" } : undefined}
+      noindex={noindex}
+      twitter={{
+        card: "summary_large_image",
+        ...(author ? { creator: "@karmaveda" } : {}),
+      }}
       article={ogType === 'article' ? {
         authors: author ? [author] : undefined,
         publishedTime: publishedTime,
+        modifiedTime: modifiedTime,
         section: category
       } : undefined}
+      extraLinks={extraLinks}
+      graph={graph}
     />
     <ClientRouter />
   </head>
   <body class="min-h-screen flex flex-col font-sans selection:bg-kv-green-200 selection:text-kv-green-900">
+    <a
+      href="#main-content"
+      class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:px-5 focus:py-3 focus:bg-kv-green-900 focus:text-white focus:rounded-full focus:shadow-lg"
+    >
+      Spring til hovedindhold
+    </a>
     <Header />
-    <main class="flex-grow">
+    <main id="main-content" class="flex-grow">
       <slot />
     </main>
     <Footer />

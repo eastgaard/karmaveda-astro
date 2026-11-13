@@ -5,11 +5,35 @@ import PageHero from '../components/PageHero.astro';
 import imgBehandlinger1 from '../assets/IMG_20170308_145130_853.jpg';
 import imgBehandlinger2 from '../assets/IMG_20170601_102106_778-72faf60f.jpg';
 import imgBehandlinger3 from '../assets/IMG_20200312_163051.jpg';
+
+const services = [
+  {
+    id: 'energibehandling',
+    name: 'Balancerende Energibehandling',
+    description:
+      'Afslappende behandling fuldt påklædt på briks, hvor energibaner stimuleres via blide tryk, akupressur, åndedræt og healing.',
+    offers: [
+      { name: '1 behandling fra 15 år (60 min)', price: 750, priceCurrency: 'DKK' },
+      { name: '1 behandling op til 14 år (30-45 min)', price: 395, priceCurrency: 'DKK' },
+    ],
+  },
+  {
+    id: 'mindfulness-session',
+    name: 'Mindfulness & Meditation Session',
+    description:
+      '1-1 mindfulness session med guidet siddende eller liggende meditation, åndedrætsøvelse samt øvelser til hverdagen.',
+    offers: [
+      { name: '1-1 Mindfulness session (60 min)', price: 850, priceCurrency: 'DKK' },
+      { name: 'NADA øreakupunktur inden session (+45 min)', price: 150, priceCurrency: 'DKK' },
+    ],
+  },
+];
 ---
 
 <Layout 
   title="Behandlinger og konsultationer | Karmaveda" 
   description="Læs om Karmavedas behandlinger og konsultationer: Livsstilskonsultation (Ayurveda), balancerende energibehandling og mindfulness/meditation."
+  services={services}
 >
   <PageHero>
     <h1 class="text-4xl md:text-5xl lg:text-6xl font-serif text-[#606c38] mb-6 leading-tight font-bold">
@@ -29,7 +53,7 @@ import imgBehandlinger3 from '../assets/IMG_20200312_163051.jpg';
     subtitle="Din Vej Til Balance"
     bgColor="white"
     buttonText="Læs mere og se priser"
-    buttonHref="/livsstilskonsultation"
+    buttonHref="/livsstilskonsultation/"
   >
     <p class="font-medium text-xl text-kv-green-800">Mangler du energi og overskud i hverdagen?</p>
     <p>
@@ -60,7 +84,7 @@ import imgBehandlinger3 from '../assets/IMG_20200312_163051.jpg';
     </p>
     
     <div class="mt-6 p-6 bg-white rounded-2xl border border-kv-earth-200 shadow-sm">
-      <h4 class="font-serif text-lg text-kv-green-900 mb-4 border-b border-kv-earth-100 pb-2">Priser</h4>
+      <h3 class="font-serif text-lg text-kv-green-900 mb-4 border-b border-kv-earth-100 pb-2">Priser</h3>
       <ul class="space-y-3">
         <li class="flex justify-between text-sm">
           <span class="text-kv-text/80">1 behandling fra 15 år (60 min)</span>
@@ -71,7 +95,7 @@ import imgBehandlinger3 from '../assets/IMG_20200312_163051.jpg';
           <span class="font-bold text-kv-green-700">395,-</span>
         </li>
       </ul>
-      <a href="/booking" class="mt-6 block text-center py-2.5 px-4 bg-kv-green-600 text-white rounded-full font-medium hover:bg-kv-green-700 transition-colors">Book Tid</a>
+      <a href="/om-os/#kontakt" class="mt-6 block text-center py-2.5 px-4 bg-kv-green-600 text-white rounded-full font-medium hover:bg-kv-green-700 transition-colors">Book Tid</a>
     </div>
   </TextWithImage>
 
@@ -92,7 +116,7 @@ import imgBehandlinger3 from '../assets/IMG_20200312_163051.jpg';
     </div>
     
     <div class="mt-6 p-6 bg-kv-earth-50 rounded-2xl border border-kv-earth-200 shadow-sm">
-      <h4 class="font-serif text-lg text-kv-green-900 mb-4 border-b border-kv-earth-200 pb-2">Priser</h4>
+      <h3 class="font-serif text-lg text-kv-green-900 mb-4 border-b border-kv-earth-200 pb-2">Priser</h3>
       <ul class="space-y-3">
         <li class="flex justify-between text-sm">
           <span class="text-kv-text/80">1-1 Mindfulness session (60 min)</span>
@@ -103,7 +127,7 @@ import imgBehandlinger3 from '../assets/IMG_20200312_163051.jpg';
           <span class="font-bold text-kv-green-700">150,-</span>
         </li>
       </ul>
-      <a href="/booking" class="mt-6 block text-center py-2.5 px-4 border border-kv-green-600 text-kv-green-700 rounded-full font-medium hover:bg-kv-green-50 transition-colors">Kontakt for booking</a>
+      <a href="/om-os/#kontakt" class="mt-6 block text-center py-2.5 px-4 border border-kv-green-600 text-kv-green-700 rounded-full font-medium hover:bg-kv-green-50 transition-colors">Kontakt for booking</a>
     </div>
   </TextWithImage>
 

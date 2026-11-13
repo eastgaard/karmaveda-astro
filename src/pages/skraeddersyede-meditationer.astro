@@ -2,9 +2,39 @@
 import Layout from '../layouts/Layout.astro';
 import TextWithImage from '../components/TextWithImage.astro';
 import PageHero from '../components/PageHero.astro';
+
+const services = [
+  {
+    id: 'personlige-meditationer',
+    name: 'Personlige og skræddersyede lydmeditationer for behandlere',
+    description:
+      'Unikke og skræddersyede lydmeditationer i høj lydkvalitet til behandlere, terapeuter og psykologer samt deres klienters forløb.',
+    offers: [
+      {
+        name: 'Basic pakke (1x intro til meditation + 1x personlig meditation)',
+        price: 500,
+        priceCurrency: 'DKK',
+      },
+      {
+        name: 'Standard pakke (1x intro til meditation + 4x personlige meditationer)',
+        price: 1500,
+        priceCurrency: 'DKK',
+      },
+      {
+        name: 'Professionel kampagnepakke (1x intro til meditation + 10x personlige meditationer)',
+        price: 2500,
+        priceCurrency: 'DKK',
+      },
+    ],
+  },
+];
 ---
 
-<Layout title="Personlige Meditationer | Karmaveda" description="Unikke og skræddersyede meditationer designet specifikt for behandlere, terapeuter, psykologer og til deres klienters unikke forløb.">
+<Layout
+  title="Personlige Meditationer for Behandlere | Karmaveda"
+  description="Unikke og skræddersyede meditationer designet specifikt for behandlere, terapeuter, psykologer og til deres klienters unikke forløb."
+  services={services}
+>
   
   <!-- Hero / Intro -->
   <PageHero>
@@ -54,76 +84,80 @@ import PageHero from '../components/PageHero.astro';
   </TextWithImage>
 
   <!-- Testimonials -->
-  <section class="py-24 bg-kv-green-900 text-kv-earth-100">
+  <section aria-labelledby="testimonials-heading" class="py-24 bg-kv-green-900 text-kv-earth-100">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-16">
-        <h2 class="text-3xl font-serif text-white mb-4">Det siger andre behandlere</h2>
+        <h2 id="testimonials-heading" class="text-3xl font-serif text-white mb-4">Det siger andre behandlere</h2>
       </div>
       
       <div class="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-5xl mx-auto">
         <!-- Testimonial 1 -->
-        <div class="bg-kv-green-800/50 p-10 rounded-3xl border border-kv-green-700 shadow-xl relative">
+        <figure class="bg-kv-green-800/50 p-10 rounded-3xl border border-kv-green-700 shadow-xl relative">
           <svg class="h-12 w-12 text-kv-green-400/30 absolute top-8 left-8" fill="currentColor" viewBox="0 0 32 32" aria-hidden="true">
             <path d="M9.352 4C4.456 7.456 1 13.12 1 19.36c0 5.088 3.072 8.064 6.624 8.064 3.36 0 5.856-2.688 5.856-5.856 0-3.168-2.208-5.472-5.088-5.472-.576 0-1.344.096-1.536.192.48-3.264 3.552-7.104 6.624-9.024L9.352 4zm16.512 0c-4.8 3.456-8.256 9.12-8.256 15.36 0 5.088 3.072 8.064 6.624 8.064 3.264 0 5.856-2.688 5.856-5.856 0-3.168-2.304-5.472-5.184-5.472-.576 0-1.248.096-1.44.192.48-3.264 3.456-7.104 6.528-9.024L25.864 4z" />
           </svg>
           <div class="relative z-10 pt-8">
-            <p class="text-lg leading-relaxed mb-8 italic text-kv-earth-200">
+            <blockquote class="text-lg leading-relaxed mb-8 italic text-kv-earth-200">
               "De varmeste anbefalinger til Nina som har indtalt en række lydfiler som jeg benytter til mine klienter som er ramt af en spiseforstyrrelse. Mine klienter har behov for tæt behandlingsforløb og har brug for støtte til at slappe af og være i kroppen på en ikke dømmende måde. Det hjælper Ninas indtalinger mine klienter med. Tak for din indsats den har stor betydning for mine klienter i deres vej ud af spiseforstyrrelsen."
-            </p>
-            <div class="font-medium text-white text-lg">Julie</div>
-            <div class="text-sm text-kv-green-300">FoodFacts</div>
+            </blockquote>
+            <figcaption>
+              <cite class="not-italic font-medium text-white text-lg block">Julie</cite>
+              <span class="text-sm text-kv-green-300">FoodFacts</span>
+            </figcaption>
           </div>
-        </div>
+        </figure>
 
         <!-- Testimonial 2 -->
-        <div class="bg-kv-green-800/50 p-10 rounded-3xl border border-kv-green-700 shadow-xl relative">
+        <figure class="bg-kv-green-800/50 p-10 rounded-3xl border border-kv-green-700 shadow-xl relative">
           <svg class="h-12 w-12 text-kv-green-400/30 absolute top-8 left-8" fill="currentColor" viewBox="0 0 32 32" aria-hidden="true">
             <path d="M9.352 4C4.456 7.456 1 13.12 1 19.36c0 5.088 3.072 8.064 6.624 8.064 3.36 0 5.856-2.688 5.856-5.856 0-3.168-2.208-5.472-5.088-5.472-.576 0-1.344.096-1.536.192.48-3.264 3.552-7.104 6.624-9.024L9.352 4zm16.512 0c-4.8 3.456-8.256 9.12-8.256 15.36 0 5.088 3.072 8.064 6.624 8.064 3.264 0 5.856-2.688 5.856-5.856 0-3.168-2.304-5.472-5.184-5.472-.576 0-1.248.096-1.44.192.48-3.264 3.456-7.104 6.528-9.024L25.864 4z" />
           </svg>
           <div class="relative z-10 pt-8">
-            <p class="text-lg leading-relaxed mb-8 italic text-kv-earth-200">
+            <blockquote class="text-lg leading-relaxed mb-8 italic text-kv-earth-200">
               "Som psykolog er jeg altid på udkig efter redskaber, der kan forbedre mine klienters oplevelse og fremskridt. Skræddersyede meditationer har været en åbenbaring. Meditationerne er dybtgående og perfekt afstemt efter de specifikke udfordringer. Kvaliteten af optagelserne er fremragende, og mine klienter har rapporteret mærkbar bedring i deres velbefindende. En uundværlig ressource i min praksis!"
-            </p>
-            <div class="font-medium text-white text-lg">Lone C.</div>
-            <div class="text-sm text-kv-green-300">Psykolog</div>
+            </blockquote>
+            <figcaption>
+              <cite class="not-italic font-medium text-white text-lg block">Lone C.</cite>
+              <span class="text-sm text-kv-green-300">Psykolog</span>
+            </figcaption>
           </div>
-        </div>
+        </figure>
       </div>
     </div>
   </section>
 
   <!-- Pricing -->
-  <section class="py-24 bg-kv-earth-50">
+  <section aria-labelledby="pricing-heading" class="py-24 bg-kv-earth-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-16">
-        <h2 class="text-3xl font-serif text-kv-green-900 mb-4">Meditationspakker</h2>
+        <h2 id="pricing-heading" class="text-3xl font-serif text-kv-green-900 mb-4">Meditationspakker</h2>
         <p class="text-lg text-kv-text/70">Vælg den løsning, der passer bedst til din praksis.</p>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto items-stretch">
         <!-- Basic -->
-        <div class="bg-white rounded-3xl p-8 shadow-lg border border-kv-earth-200 flex flex-col hover:shadow-xl transition-shadow">
+        <article class="bg-white rounded-3xl p-8 shadow-lg border border-kv-earth-200 flex flex-col hover:shadow-xl transition-shadow">
           <h3 class="text-xl font-bold text-kv-green-800 mb-4 text-center uppercase tracking-wide">Basic</h3>
           <div class="text-center mb-8 pb-8 border-b border-kv-earth-100">
             <span class="text-4xl font-serif text-kv-green-900">DKK 500,-</span>
           </div>
           <ul class="space-y-4 mb-10 flex-grow text-kv-text/80 font-light">
             <li class="flex items-center">
-              <svg class="h-5 w-5 text-kv-green-500 mr-3 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              <svg class="h-5 w-5 text-kv-green-500 mr-3 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
               1x Intro til meditation
             </li>
             <li class="flex items-center">
-              <svg class="h-5 w-5 text-kv-green-500 mr-3 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              <svg class="h-5 w-5 text-kv-green-500 mr-3 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
               1x personlig meditation
             </li>
           </ul>
           <a href="mailto:nina@karmaveda.dk" class="w-full block text-center px-6 py-3 border border-kv-green-600 text-kv-green-700 font-medium rounded-full hover:bg-kv-green-50 transition-colors">
-            Kontakt
+            Kontakt<span class="sr-only"> om Basic pakken</span>
           </a>
-        </div>
+        </article>
 
         <!-- Standard -->
-        <div class="bg-kv-green-900 rounded-3xl p-8 shadow-2xl border border-kv-green-700 flex flex-col relative transform md:-translate-y-4 z-10">
+        <article class="bg-kv-green-900 rounded-3xl p-8 shadow-2xl border border-kv-green-700 flex flex-col relative transform md:-translate-y-4 z-10">
           <div class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
             <span class="bg-kv-earth-400 text-kv-green-950 text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-wide shadow-sm">Mest populære</span>
           </div>
@@ -133,48 +167,50 @@ import PageHero from '../components/PageHero.astro';
           </div>
           <ul class="space-y-4 mb-10 flex-grow text-kv-earth-100 font-light">
             <li class="flex items-center">
-              <svg class="h-5 w-5 text-kv-green-400 mr-3 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              <svg class="h-5 w-5 text-kv-green-400 mr-3 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
               1x Intro til meditation
             </li>
             <li class="flex items-center">
-              <svg class="h-5 w-5 text-kv-green-400 mr-3 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              <svg class="h-5 w-5 text-kv-green-400 mr-3 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
               4x personlige meditationer
             </li>
           </ul>
           <a href="mailto:nina@karmaveda.dk" class="w-full block text-center px-6 py-3 bg-kv-earth-400 text-kv-green-950 font-medium rounded-full hover:bg-kv-earth-300 transition-colors shadow-md hover:shadow-lg">
-            Kontakt
+            Kontakt<span class="sr-only"> om Standard pakken</span>
           </a>
-        </div>
+        </article>
 
         <!-- Professionel -->
-        <div class="bg-white rounded-3xl p-8 shadow-lg border border-kv-green-200 flex flex-col hover:shadow-xl transition-shadow relative overflow-hidden">
+        <article class="bg-white rounded-3xl p-8 shadow-lg border border-kv-green-200 flex flex-col hover:shadow-xl transition-shadow relative overflow-hidden">
           <div class="absolute top-0 right-0 bg-red-500 text-white text-xs font-bold px-3 py-1 rounded-bl-lg uppercase tracking-wider z-10">
             Kampagne
           </div>
           <h3 class="text-xl font-bold text-kv-green-800 mb-4 text-center uppercase tracking-wide">Professionel</h3>
           <div class="text-center mb-8 pb-8 border-b border-kv-earth-100">
             <div class="mb-1">
-              <span class="text-lg text-gray-400 line-through">DKK 4.500,-</span>
+              <span class="sr-only">Normalpris: </span>
+              <del class="text-lg text-gray-400">DKK 4.500,-</del>
             </div>
             <div>
+              <span class="sr-only">Kampagnepris: </span>
               <span class="text-4xl font-serif text-kv-green-900">DKK 2.500,-</span>
             </div>
           </div>
           
           <ul class="space-y-4 mb-10 flex-grow text-kv-text/80 font-light">
             <li class="flex items-center">
-              <svg class="h-5 w-5 text-kv-green-500 mr-3 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              <svg class="h-5 w-5 text-kv-green-500 mr-3 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
               1x Intro til meditation
             </li>
             <li class="flex items-center">
-              <svg class="h-5 w-5 text-kv-green-500 mr-3 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              <svg class="h-5 w-5 text-kv-green-500 mr-3 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
               10x personlige meditationer
             </li>
           </ul>
           <a href="mailto:nina@karmaveda.dk" class="w-full block text-center px-6 py-3 border border-kv-green-600 text-kv-green-700 font-medium rounded-full hover:bg-kv-green-50 transition-colors">
-            Kontakt
+            Kontakt<span class="sr-only"> om Professionel pakken</span>
           </a>
-        </div>
+        </article>
       </div>
     </div>
   </section>
