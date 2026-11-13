@@ -7,3 +7,15 @@
 /30-videnskabelige-undersoegelser /blog/videnskabelige-undersoegelser-om-meditation 301
 /sov-dig-til-sundhed /blog/sov-dig-til-sundhed 301
 /booking /om-os 301
+
+# Tillad også /.md hvis man skriver .md direkte efter skråstregen i adresselinjen
+/.md /index.md 301
+/behandlinger/.md /behandlinger.md 301
+/livsstilskonsultation/.md /livsstilskonsultation.md 301
+/meditation/.md /meditation.md 301
+/skraeddersyede-meditationer/.md /skraeddersyede-meditationer.md 301
+/om-os/.md /om-os.md 301
+/om-nina-riisager/.md /om-nina-riisager.md 301
+/blog/.md /blog.md 301
+/blog/:slug/.md /blog/:slug.md 301
+/kategori/:slug/.md /kategori/:slug.md 301
